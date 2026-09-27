@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebookF, FaFilePdf, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const item = {
   hidden: { y: 30, opacity: 0 },
@@ -14,9 +14,9 @@ const container = {
 };
 
 const socials = [
+  { label: 'Facebook', icon: <FaFacebookF size={16} />, href: 'https://www.facebook.com/Joshngmundo.lV/' },
   { label: 'GitHub', icon: <FaGithub size={16} />, href: 'https://github.com/envydoes' },
-  { label: 'Instagram', icon: <FaInstagram size={16} />, href: '#' },
-  { label: 'LinkedIn', icon: <FaLinkedinIn size={16} />, href: '#' },
+  { label: 'Instagram', icon: <FaInstagram size={16} />, href: 'https://www.instagram.com/envydoes_/' },
 ];
 
 export default function Hero() {
@@ -41,7 +41,7 @@ export default function Hero() {
         {/* Photo — large, centered, in front of name, bleeds to bottom */}
         <motion.div
           variants={item}
-          className="absolute left-1/2 -translate-x-1/2 bottom-4 z-10 w-[76vw] max-w-[940px]"
+          className="absolute left-1/2 -translate-x-1/2 bottom-4 z-10 w-[80vw] max-w-[1000px]"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -54,7 +54,7 @@ export default function Hero() {
         {/* Lower-left: role + desc + CTA */}
         <motion.div
           variants={item}
-          className="absolute bottom-28 left-6 md:left-[max(1.5rem,calc(50%-32.5vw))] max-w-[260px] z-20"
+          className="absolute bottom-32 left-6 md:left-[max(1.5rem,calc(50%-32.5vw))] max-w-[260px] z-20"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-3 leading-tight">
             Web Developer
@@ -62,18 +62,28 @@ export default function Hero() {
           <p className="text-black/50 text-sm leading-relaxed mb-6">
             Building interactive, high-performance web experiences with clean systems underneath.
           </p>
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 rounded-full bg-black !text-white px-6 py-3 text-sm font-medium hover:bg-black/90 transition-colors"
-          >
-            Let&apos;s collaborate ↗
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 rounded-full bg-black !text-white px-6 py-3 text-sm font-medium hover:bg-black/90 transition-colors"
+            >
+              Let&apos;s collaborate ↗
+            </a>
+            <a
+              href="/Joshua_Madulid_CV.pdf"
+              download="Joshua_Madulid_CV.pdf"
+              className="inline-flex items-center gap-2 rounded-full border border-black/20 px-5 py-3 text-sm font-medium text-black/70 transition-colors hover:border-black/50 hover:text-black"
+            >
+              <FaFilePdf size={15} aria-hidden="true" />
+              Download CV
+            </a>
+          </div>
         </motion.div>
 
         {/* Lower-right: socials */}
         <motion.div
           variants={item}
-          className="absolute bottom-28 right-6 md:right-[max(1.5rem,calc(50%-32.5vw))] flex flex-col gap-5 z-20"
+          className="absolute bottom-32 right-6 md:right-[max(1.5rem,calc(50%-32.5vw))] flex flex-col gap-5 z-20"
         >
           {socials.map((s) => (
             <a

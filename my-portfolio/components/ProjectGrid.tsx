@@ -29,7 +29,7 @@ export default function ProjectGrid() {
               <img
                 src={p.image}
                 alt={p.title}
-                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
+                className={`w-full h-full ${p.imageFit === 'contain' ? 'object-contain bg-white' : 'object-cover'} transition-transform duration-500 ease-out group-hover:scale-[1.08]`}
               />
               <div className="absolute top-3 left-3 flex gap-2">
                 <span className="rounded-full bg-black/60 backdrop-blur px-3 py-1 text-xs text-white border border-white/20">
