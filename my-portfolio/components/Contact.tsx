@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaGithub } from 'react-icons/fa';
+import { FaFacebookF, FaGithub, FaInstagram } from 'react-icons/fa';
 
 export default function Contact() {
   return (
@@ -33,7 +33,17 @@ export default function Contact() {
           </a>
         </div>
 
-        <div className="mt-12 flex justify-center">
+        <div className="mt-12 flex flex-wrap justify-center gap-3">
+          <a
+            href="https://www.facebook.com/Joshngmundo.lV/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook profile"
+            className="inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-3 text-sm text-black/70 transition-colors hover:border-black/40 hover:text-black"
+          >
+            <FaFacebookF size={17} aria-hidden="true" />
+            Facebook
+          </a>
           <a
             href="https://github.com/envydoes"
             target="_blank"
@@ -43,6 +53,16 @@ export default function Contact() {
           >
             <FaGithub size={17} aria-hidden="true" />
             GitHub
+          </a>
+          <a
+            href="https://www.instagram.com/envydoes_/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram profile"
+            className="inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-3 text-sm text-black/70 transition-colors hover:border-black/40 hover:text-black"
+          >
+            <FaInstagram size={17} aria-hidden="true" />
+            Instagram
           </a>
         </div>
       </motion.div>

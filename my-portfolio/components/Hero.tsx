@@ -41,7 +41,7 @@ export default function Hero() {
         {/* Photo — large, centered, in front of name, bleeds to bottom */}
         <motion.div
           variants={item}
-          className="absolute left-1/2 -translate-x-1/2 bottom-4 z-10 w-[72vw] max-w-[880px]"
+          className="absolute left-1/2 -translate-x-1/2 bottom-4 z-10 w-[76vw] max-w-[940px]"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -54,7 +54,7 @@ export default function Hero() {
         {/* Lower-left: role + desc + CTA */}
         <motion.div
           variants={item}
-          className="absolute bottom-24 left-6 md:left-[max(1.5rem,calc(50%-32.5vw))] max-w-[260px] z-20"
+          className="absolute bottom-28 left-6 md:left-[max(1.5rem,calc(50%-32.5vw))] max-w-[260px] z-20"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-3 leading-tight">
             Web Developer
@@ -73,7 +73,7 @@ export default function Hero() {
         {/* Lower-right: socials */}
         <motion.div
           variants={item}
-          className="absolute bottom-24 right-6 md:right-[max(1.5rem,calc(50%-32.5vw))] flex flex-col gap-5 z-20"
+          className="absolute bottom-28 right-6 md:right-[max(1.5rem,calc(50%-32.5vw))] flex flex-col gap-5 z-20"
         >
           {socials.map((s) => (
             <a
