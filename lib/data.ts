@@ -38,14 +38,38 @@ export const projects = [
     category: 'Full-Stack',
     description:
       'Cross-platform resident tracking system built for the Sumacab Este community, helping organize resident information and support efficient local administration.',
-    year: '2026',
+    year: '2024 - 2025',
     tags: ['PHP', 'MySQL', 'Tailwind CSS', 'Live System'],
     image: 'https://sum-este-portal.digital/uploads/site/sitelogo_8ba5ce5e050ec6c3.png',
-    imageFit: 'cover',
     badge: 'Live Production',
     liveUrl: 'https://sum-este-portal.digital',
     githubUrl: 'https://github.com/envydoes/SumEste-Portal',
-    designUrl: '',
+  },
+  {
+    id: 'momms-system',
+    title: 'Momms Inventory Management System',
+    category: 'Full-Stack',
+    description:
+      'Modern organizational and inventory management web dashboard with responsive data tables, automated stock tracking, and analytical reporting.',
+    year: '2024',
+    tags: ['PHP', 'MySQL', 'JavaScript', 'Tailwind CSS'],
+    image: 'https://raw.githubusercontent.com/envydoes/momms-system/main/images/LOGO.png',
+    badge: 'Core System',
+    liveUrl: '',
+    githubUrl: 'https://github.com/envydoes/momms-system',
+  },
+  {
+    id: 'tatakph-app',
+    title: 'TatakPH Mobile Application',
+    category: 'Mobile',
+    description:
+      'Cross-platform mobile application highlighting Filipino culture, heritage, and local brand showcases with offline caching.',
+    year: '2024',
+    tags: ['Ionic', 'TypeScript', 'Capacitor', 'Mobile'],
+    image: 'https://raw.githubusercontent.com/envydoes/ionic-TatakPH-APP/main/APP/tatakPH/src/assets/imgs/logo.png',
+    badge: 'Mobile App',
+    liveUrl: '',
+    githubUrl: 'https://github.com/envydoes/ionic-TatakPH-APP',
   },
   {
     id: 'aurora',
@@ -56,11 +80,9 @@ export const projects = [
     year: '2024',
     tags: ['PHP', 'HTML5', 'CSS3', 'JavaScript'],
     image: 'https://raw.githubusercontent.com/envydoes/aurora/main/images/logo.png',
-    imageFit: 'cover',
     badge: 'Tourism Platform',
     liveUrl: '',
     githubUrl: 'https://github.com/envydoes/aurora',
-    designUrl: '',
   },
   {
     id: 'atom-ai-design',
@@ -70,27 +92,31 @@ export const projects = [
       'Comprehensive conversing app interface design with home chat, login, cloud space, and 20 supporting high-fidelity screens organized in Figma.',
     year: '2024',
     tags: ['Figma', 'UI/UX', 'Design System', '20 Screens'],
-    image: '/images/atom-ai/logo.png',
-    imageFit: 'contain',
+    image: '/images/atom-ai/chat.jpg',
     badge: 'Design System',
     liveUrl: '',
     githubUrl: '',
-    designUrl: 'https://www.figma.com/proto/W3NBVeRn7wP39e3Y5dC1jh/ITHC-CONVERSING-APP-%22ATOM-AI%22?node-id=0-304&t=vTVApuKcPB64792I-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1308%3A2133',
   },
 ];
 
 export const timeline = [
   {
-    year: '2023 — Present',
-    title: 'BS Information Technology (Graduating) — Web System Technology',
+    year: '2024 — Present',
+    title: 'Full-Stack Developer & UI/UX Specialist',
     description:
-      'Currently studying at Nueva Ecija University of Science and Technology (NEUST) • Nueva Ecija, Philippines.',
+      'Building production systems end-to-end — resident/community portals, inventory dashboards, mobile apps — and designing the interfaces that sit on top of them.',
   },
   {
-    year: '2022 — 2023',
-    title: 'Started Programming — HTML, CSS & JavaScript',
+    year: '2024',
+    title: 'AI & Cloud Tooling Upskilling',
     description:
-      'Began the journey into web development by learning HTML, CSS, and JavaScript from the ground up, then expanded into UI/UX — designing interactive front-end builds and translating ideas into polished web interfaces.',
+      'Completed enterprise architecture, system integration, cyber awareness, and Azure AI fundamentals coursework to round out full-stack delivery with cloud and AI literacy.',
+  },
+  {
+    year: '2023 — 2024',
+    title: 'Design Systems & Interaction Design',
+    description:
+      'Shifted from pure development into UI/UX, producing high-fidelity Figma design systems and translating them into interactive front-end builds.',
   },
 ];
 

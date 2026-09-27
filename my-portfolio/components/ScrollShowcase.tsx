@@ -18,7 +18,7 @@ export default function ScrollShowcase() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      cardRefs.current.forEach((card, i) => {
+      cardRefs.current.forEach((card) => {
         gsap.fromTo(
           card,
           { scale: 0.95, y: 60, opacity: 0.5 },
