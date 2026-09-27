@@ -51,7 +51,7 @@ export default function ScrollShowcase() {
   }
 
   return (
-    <section ref={sectionRef} className="min-h-screen bg-[#0F0F10] py-32 px-6 md:px-16">
+    <section ref={sectionRef} className="min-h-screen bg-white py-32 px-6 md:px-16">
       <div className="grid md:grid-cols-3 gap-6">
         {cards.map((c, i) => (
           <div
@@ -59,11 +59,11 @@ export default function ScrollShowcase() {
             ref={(el) => (cardRefs.current[i] = el)}
             onPointerMove={(e) => handleTilt(e, cardRefs.current[i])}
             onPointerLeave={() => resetTilt(cardRefs.current[i])}
-            className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 will-change-transform"
+            className="rounded-2xl border border-black/10 bg-black/5 backdrop-blur-md p-6 will-change-transform"
             style={{ transformStyle: 'preserve-3d' }}
           >
             <span className="inline-block text-xs uppercase tracking-wide text-emerald-400 mb-3">{c.tag}</span>
-            <h3 className="text-xl font-semibold text-white mb-4">{c.title}</h3>
+            <h3 className="text-xl font-semibold text-black mb-4">{c.title}</h3>
             <div className="aspect-video rounded-lg overflow-hidden bg-black/30">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={c.img} alt={c.title} className="w-full h-full object-cover" />

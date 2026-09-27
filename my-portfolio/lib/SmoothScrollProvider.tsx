@@ -26,9 +26,23 @@ export default function SmoothScrollProvider({ children }) {
       lenis.on('scroll', ScrollTrigger.update);
     }).catch(() => {});
 
+    // Intercept all anchor hash-link clicks and smooth-scroll via Lenis
+    function handleAnchorClick(e: MouseEvent) {
+      const target = (e.target as HTMLElement).closest('a');
+      if (!target) return;
+      const href = target.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const el = document.querySelector(href);
+      if (!el) return;
+      e.preventDefault();
+      lenis.scrollTo(el as HTMLElement, { offset: 0, duration: 1.2 });
+    }
+    document.addEventListener('click', handleAnchorClick);
+
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      document.removeEventListener('click', handleAnchorClick);
     };
   }, []);
 
