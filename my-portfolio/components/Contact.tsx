@@ -14,20 +14,24 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-10% 0px' }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="mx-auto max-w-5xl text-center"
+        className="mx-auto max-w-6xl"
       >
-        <p className="text-xs uppercase tracking-[0.2em] text-black/40">
-          Get in touch
-        </p>
-        <h2 className="mt-4 text-4xl font-bold tracking-tight md:text-6xl">
-          You can reach me at
-        </h2>
-        <a
-          href="mailto:madulidjoshuam@gmail.com"
-          className="mt-8 inline-block break-all text-xl font-medium underline decoration-black/20 underline-offset-8 transition-colors hover:decoration-black md:text-3xl"
-        >
-          madulidjoshuam@gmail.com
-        </a>
+        <div>
+          <p className="text-xs uppercase tracking-[0.2em] text-black/40">
+            Get in touch
+          </p>
+          <h2 className="mt-4 text-4xl font-bold tracking-tight md:text-6xl">
+            You can reach me at
+          </h2>
+        </div>
+        <div className="mt-8 text-center">
+          <a
+            href="mailto:madulidjoshuam@gmail.com"
+            className="inline-block break-all text-xl font-medium underline decoration-black/20 underline-offset-8 transition-colors hover:decoration-black md:text-3xl"
+          >
+            madulidjoshuam@gmail.com
+          </a>
+        </div>
 
         <div className="mt-12 flex justify-center">
           <a
