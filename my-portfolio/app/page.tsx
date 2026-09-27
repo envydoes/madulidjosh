@@ -4,6 +4,7 @@ import TechMatrix from '@/components/TechMatrix';
 import ProjectGrid from '@/components/ProjectGrid';
 import Timeline from '@/components/Timeline';
 import Certifications from '@/components/Certifications';
+import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       </div>
       <Timeline />
       <Certifications />
+      <Contact />
     </main>
   );
 }
