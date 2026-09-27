@@ -2,7 +2,55 @@
 
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import type { IconType } from 'react-icons';
+import {
+  SiApache,
+  SiClaudecode,
+  SiCoolify,
+  SiDocker,
+  SiFigma,
+  SiGit,
+  SiGithub,
+  SiGooglegemini,
+  SiHtml5,
+  SiJavascript,
+  SiLinux,
+  SiMysql,
+  SiNodedotjs,
+  SiPhp,
+  SiTailwindcss,
+  SiTypescript,
+} from 'react-icons/si';
+import { TbApi, TbBrandCss3, TbBrandOpenai } from 'react-icons/tb';
 import { techStack, colorFor } from '@/lib/data';
+
+const techIcons: Record<string, { Icon: IconType; color: string }[]> = {
+  PHP: [{ Icon: SiPhp, color: '#777BB4' }],
+  MySQL: [{ Icon: SiMysql, color: '#4479A1' }],
+  JavaScript: [{ Icon: SiJavascript, color: '#C9A900' }],
+  TypeScript: [{ Icon: SiTypescript, color: '#3178C6' }],
+  'Tailwind CSS': [{ Icon: SiTailwindcss, color: '#06B6D4' }],
+  'HTML5 & CSS3': [
+    { Icon: SiHtml5, color: '#E34F26' },
+    { Icon: TbBrandCss3, color: '#1572B6' },
+  ],
+  'Node.js': [{ Icon: SiNodedotjs, color: '#5FA04E' }],
+  'RESTful APIs': [{ Icon: TbApi, color: '#64748B' }],
+  Docker: [{ Icon: SiDocker, color: '#2496ED' }],
+  Coolify: [{ Icon: SiCoolify, color: '#6C4CE4' }],
+  'Git & GitHub': [
+    { Icon: SiGit, color: '#F05032' },
+    { Icon: SiGithub, color: '#181717' },
+  ],
+  Figma: [{ Icon: SiFigma, color: '#F24E1E' }],
+  'Claude Code': [{ Icon: SiClaudecode, color: '#D97757' }],
+  'Google Gemini': [{ Icon: SiGooglegemini, color: '#4285F4' }],
+  OpenAI: [{ Icon: TbBrandOpenai, color: '#412991' }],
+  'Linux / Apache': [
+    { Icon: SiLinux, color: '#E3A800' },
+    { Icon: SiApache, color: '#D22128' },
+  ],
+};
 
 function MagneticPill({ name, category, index }: { name: string; category: string; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,8 +77,8 @@ function MagneticPill({ name, category, index }: { name: string; category: strin
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: fromX }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: fromX, y: 12, rotate: index % 2 === 0 ? -3 : 3, scale: 0.92 }}
+      whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
       viewport={{ once: true, margin: '-10% 0px' }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       onPointerMove={handleMove}
@@ -43,7 +91,16 @@ function MagneticPill({ name, category, index }: { name: string; category: strin
       }}
       className="flex items-center gap-2 rounded-full border border-black/15 bg-neutral-100 backdrop-blur-md px-4 py-2 text-sm text-black cursor-default select-none"
     >
-      <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
+      <span className="flex items-center gap-1">
+        {techIcons[name]?.map(({ Icon, color: iconColor }, iconIndex) => (
+          <Icon
+            key={`${name}-${iconIndex}`}
+            size={15}
+            color={iconColor}
+            aria-hidden="true"
+          />
+        ))}
+      </span>
       {name}
     </motion.div>
   );

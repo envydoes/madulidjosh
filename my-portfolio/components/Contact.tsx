@@ -10,8 +10,8 @@ export default function Contact() {
       className="bg-white px-6 md:px-16 py-28 md:py-36 text-black"
     >
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, x: -28, y: 18, rotateY: -4, scale: 0.97 }}
+        whileInView={{ opacity: 1, x: 0, y: 0, rotateY: 0, scale: 1 }}
         viewport={{ once: true, margin: '-10% 0px' }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="mx-auto max-w-6xl"

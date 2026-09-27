@@ -3,14 +3,53 @@
 import { motion } from 'framer-motion';
 import { FaFacebookF, FaFilePdf, FaGithub, FaInstagram } from 'react-icons/fa';
 
-const item = {
-  hidden: { y: 30, opacity: 0 },
-  show: { y: 0, opacity: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+const nameReveal = {
+  hidden: { opacity: 0, y: 34, scale: 0.94, rotateX: -8 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotateX: 0,
+    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const portraitReveal = {
+  hidden: { opacity: 0, y: 120, scale: 0.84, rotateX: 12 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotateX: 0,
+    transition: { type: 'spring', stiffness: 78, damping: 18, delay: 0.48 },
+  },
+};
+
+const leftReveal = {
+  hidden: { opacity: 0, x: -64, scale: 0.96, rotateY: 8 },
+  show: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    rotateY: 0,
+    transition: { type: 'spring', stiffness: 105, damping: 19, delay: 0.12 },
+  },
+};
+
+const rightReveal = {
+  hidden: { opacity: 0, x: 64, scale: 0.96, rotateY: -8 },
+  show: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    rotateY: 0,
+    transition: { type: 'spring', stiffness: 105, damping: 19, delay: 0.2 },
+  },
 };
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.12 } },
 };
 
 const socials = [
@@ -26,12 +65,13 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
+        style={{ perspective: 1200 }}
         className="relative min-h-screen px-6 md:px-16 pt-28"
       >
 
         {/* Big split name — sits behind photo */}
         <motion.h1
-          variants={item}
+          variants={nameReveal}
           className="relative z-0 mt-10 text-[13vw] md:text-[7.5rem] leading-[0.9] font-extrabold tracking-tight whitespace-nowrap text-center"
         >
           <span className="text-transparent [-webkit-text-stroke:1.5px_black]">JOSHUA</span>{' '}
@@ -40,7 +80,7 @@ export default function Hero() {
 
         {/* Photo — large, centered, in front of name, bleeds to bottom */}
         <motion.div
-          variants={item}
+          variants={portraitReveal}
           className="absolute left-1/2 -translate-x-1/2 bottom-4 z-10 w-[80vw] max-w-[1000px]"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,7 +93,7 @@ export default function Hero() {
 
         {/* Lower-left: role + desc + CTA */}
         <motion.div
-          variants={item}
+          variants={leftReveal}
           className="absolute bottom-32 left-6 md:left-[max(1.5rem,calc(50%-32.5vw))] max-w-[260px] z-20"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-3 leading-tight">
@@ -82,7 +122,7 @@ export default function Hero() {
 
         {/* Lower-right: socials */}
         <motion.div
-          variants={item}
+          variants={rightReveal}
           className="absolute bottom-32 right-6 md:right-[max(1.5rem,calc(50%-32.5vw))] flex flex-col gap-5 z-20"
         >
           {socials.map((s) => (

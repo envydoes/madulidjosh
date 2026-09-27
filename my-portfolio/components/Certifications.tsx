@@ -19,8 +19,14 @@ export default function Certifications() {
           <motion.button
             key={c.title}
             onClick={() => setActive(i)}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{
+              opacity: 0,
+              x: i % 2 === 0 ? -24 : 24,
+              y: 18,
+              rotate: i % 2 === 0 ? -2 : 2,
+              scale: 0.95,
+            }}
+            whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
             viewport={{ once: true, margin: '-10% 0px' }}
             transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
             whileHover={{ scale: 1.03 }}
