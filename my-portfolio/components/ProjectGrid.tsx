@@ -5,8 +5,8 @@ import { projects } from '@/lib/data';
 
 export default function ProjectGrid() {
   return (
-    <section className="bg-white px-6 md:px-16 py-24">
-      <div className="max-w-6xl mx-auto mb-12">
+    <section className="bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
+      <div className="mx-auto mb-10 max-w-6xl md:mb-12">
         <span className="text-xs uppercase tracking-[0.2em] text-black/40">Selected Works</span>
         <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Projects &amp; Systems</h2>
       </div>
@@ -47,7 +47,7 @@ export default function ProjectGrid() {
               </div>
             </div>
 
-            <div className="p-6 transition-transform duration-300 ease-out group-hover:-translate-y-1">
+            <div className="p-4 transition-transform duration-300 ease-out group-hover:-translate-y-1 sm:p-6">
               <h3 className="text-xl font-semibold text-black mb-2">{p.title}</h3>
               <p className="text-sm text-black/60 leading-relaxed mb-4">{p.description}</p>
               <div className="flex flex-wrap gap-2">

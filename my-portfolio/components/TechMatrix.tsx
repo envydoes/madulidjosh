@@ -108,12 +108,12 @@ function MagneticPill({ name, category, index }: { name: string; category: strin
 
 export default function TechMatrix() {
   return (
-    <section className="bg-white px-6 md:px-16 py-24">
-      <div className="max-w-5xl mx-auto text-center mb-12">
+    <section className="bg-white px-4 py-16 sm:px-6 md:px-16 md:py-24">
+      <div className="mx-auto mb-10 max-w-5xl text-center md:mb-12">
         <span className="text-xs uppercase tracking-[0.2em] text-black/40">Tech Stack Matrix</span>
         <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Toolkit</h2>
       </div>
-      <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+      <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-2 sm:gap-3">
         {techStack.map((t, i) => (
           <MagneticPill key={t.name} name={t.name} category={t.category} index={i} />
         ))}

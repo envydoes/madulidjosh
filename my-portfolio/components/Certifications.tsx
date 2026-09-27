@@ -8,13 +8,13 @@ export default function Certifications() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="certs" className="bg-white px-6 md:px-16 py-24">
-      <div className="max-w-6xl mx-auto mb-12">
+    <section id="certs" className="scroll-mt-24 bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
+      <div className="mx-auto mb-10 max-w-6xl md:mb-12">
         <span className="text-xs uppercase tracking-[0.2em] text-black/40">Verified</span>
         <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Certifications</h2>
       </div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
         {certifications.map((c, i) => (
           <motion.button
             key={c.title}
@@ -59,11 +59,11 @@ export default function Certifications() {
               exit={{ scale: 0.92, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-2xl w-full rounded-2xl overflow-hidden border border-black/10 bg-white"
+              className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-black/10 bg-white"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={certifications[active].image} alt={certifications[active].title} className="w-full" />
-              <div className="p-6">
+              <img src={certifications[active].image} alt={certifications[active].title} className="max-h-[70vh] w-full object-contain" />
+              <div className="p-4 sm:p-6">
                 <h3 className="text-lg font-semibold text-black">{certifications[active].title}</h3>
                 <p className="text-sm text-black/50 mt-1">{certifications[active].issuer}</p>
               </div>

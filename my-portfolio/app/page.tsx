@@ -10,13 +10,13 @@ export default function Home() {
   return (
     <main>
       <Nav />
-      <div id="hero">
+      <div id="hero" className="scroll-mt-24">
         <Hero />
       </div>
-      <div id="stack">
+      <div id="stack" className="scroll-mt-24">
         <TechMatrix />
       </div>
-      <div id="projects">
+      <div id="projects" className="scroll-mt-24">
         <ProjectGrid />
       </div>
       <Timeline />
