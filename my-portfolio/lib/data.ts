@@ -94,7 +94,33 @@ export const timeline = [
   },
 ];
 
-export const certifications = [
+export const certifications: {
+  title: string;
+  issuer: string;
+  image: string;
+  date?: string;
+  credentialId?: string;
+  credentialUrl?: string;
+  description?: string;
+}[] = [
+  {
+    title: 'Information Technology Specialist: HTML and CSS',
+    issuer: 'Certiport',
+    image: '/images/certiport-html-css.png',
+    date: 'October 29, 2026',
+    credentialId: 'rdmR-uSrs',
+    credentialUrl: 'https://www.certiport.com/portal/desktopdefault.aspx?tabid=195&roleid=1',
+    description: 'Completed the Information Technology Specialist certification requirements for HTML and CSS. Valid for five years from the date of issue.',
+  },
+  {
+    title: 'Employability Skills: JobReady (With AI)',
+    issuer: 'Wadhwani Foundation',
+    image: '/images/wadhwani-jobready-ai.png',
+    date: 'November 4, 2026',
+    credentialId: '6aeb2234ceb192dc91cf041d',
+    credentialUrl: 'https://web.certificate.wfglobal.org/en/certificate?certificateId=6aeb2234ceb192dc91cf041d',
+    description: 'Completed JobReady (With AI) v1 at the Advanced Level, including 75 hours of training and in-class applications.',
+  },
   { title: 'Google AI Professional Certificate', issuer: 'Google', image: '/images/google-ai-professional-certificate.png' },
   { title: 'System Integration', issuer: 'Upskill', image: '/images/upskill-system-integration.png' },
   { title: 'Enterprise Architecture', issuer: 'Upskill', image: '/images/upskill-enterprise-architecture.png' },

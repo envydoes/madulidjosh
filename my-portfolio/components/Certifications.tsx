@@ -66,6 +66,25 @@ export default function Certifications() {
               <div className="p-4 sm:p-6">
                 <h3 className="text-lg font-semibold text-black">{certifications[active].title}</h3>
                 <p className="text-sm text-black/50 mt-1">{certifications[active].issuer}</p>
+                {certifications[active].date && (
+                  <p className="mt-2 text-sm text-black/60">Issued {certifications[active].date}</p>
+                )}
+                {certifications[active].credentialId && (
+                  <p className="mt-2 break-all text-xs text-black/50">Credential ID: {certifications[active].credentialId}</p>
+                )}
+                {certifications[active].description && (
+                  <p className="mt-3 text-sm leading-relaxed text-black/70">{certifications[active].description}</p>
+                )}
+                {certifications[active].credentialUrl && (
+                  <a
+                    href={certifications[active].credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-block rounded-lg bg-black px-4 py-2 text-sm font-medium text-white hover:bg-black/80"
+                  >
+                    Verify Certificate
+                  </a>
+                )}
               </div>
             </motion.div>
           </motion.div>
