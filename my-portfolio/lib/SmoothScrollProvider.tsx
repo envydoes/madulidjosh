@@ -37,12 +37,19 @@ export default function SmoothScrollProvider({ children }) {
       e.preventDefault();
       lenis.scrollTo(el as HTMLElement, { offset: 0, duration: 1.2 });
     }
+
+    function handleContentResize() {
+      lenis.resize();
+    }
+
     document.addEventListener('click', handleAnchorClick);
+    window.addEventListener('portfolio:content-resize', handleContentResize);
 
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
       document.removeEventListener('click', handleAnchorClick);
+      window.removeEventListener('portfolio:content-resize', handleContentResize);
     };
   }, []);
 

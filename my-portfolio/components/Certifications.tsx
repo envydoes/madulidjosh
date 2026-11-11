@@ -9,6 +9,13 @@ export default function Certifications() {
   const [showAll, setShowAll] = useState(false);
   const visibleCertifications = showAll ? certifications : certifications.slice(0, 3);
 
+  function toggleCertifications() {
+    setShowAll((current) => !current);
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('portfolio:content-resize'));
+    });
+  }
+
   return (
     <section id="certs" className="scroll-mt-24 bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
       <div className="mx-auto mb-10 max-w-6xl md:mb-12">
@@ -50,7 +57,7 @@ export default function Certifications() {
         <div className="mx-auto mt-8 max-w-6xl text-center">
           <button
             type="button"
-            onClick={() => setShowAll((current) => !current)}
+            onClick={toggleCertifications}
             className="rounded-lg border border-black/15 px-5 py-2.5 text-sm font-medium text-black transition-colors hover:bg-black hover:text-white"
           >
             {showAll ? 'See less' : 'View all certifications'}
