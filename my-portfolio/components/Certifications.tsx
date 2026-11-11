@@ -6,6 +6,8 @@ import { certifications } from '@/lib/data';
 
 export default function Certifications() {
   const [active, setActive] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
+  const visibleCertifications = showAll ? certifications : certifications.slice(0, 3);
 
   return (
     <section id="certs" className="scroll-mt-24 bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
@@ -15,7 +17,7 @@ export default function Certifications() {
       </div>
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {certifications.map((c, i) => (
+        {visibleCertifications.map((c, i) => (
           <motion.button
             key={c.title}
             onClick={() => setActive(i)}
@@ -43,6 +45,18 @@ export default function Certifications() {
           </motion.button>
         ))}
       </div>
+
+      {certifications.length > 3 && (
+        <div className="mx-auto mt-8 max-w-6xl text-center">
+          <button
+            type="button"
+            onClick={() => setShowAll((current) => !current)}
+            className="rounded-lg border border-black/15 px-5 py-2.5 text-sm font-medium text-black transition-colors hover:bg-black hover:text-white"
+          >
+            {showAll ? 'Show less' : 'View all certifications'}
+          </button>
+        </div>
+      )}
 
       <AnimatePresence>
         {active !== null && (
