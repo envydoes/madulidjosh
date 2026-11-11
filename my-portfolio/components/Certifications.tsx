@@ -53,7 +53,7 @@ export default function Certifications() {
             onClick={() => setShowAll((current) => !current)}
             className="rounded-lg border border-black/15 px-5 py-2.5 text-sm font-medium text-black transition-colors hover:bg-black hover:text-white"
           >
-            {showAll ? 'Show less' : 'View all certifications'}
+            {showAll ? 'See less' : 'View all certifications'}
           </button>
         </div>
       )}
