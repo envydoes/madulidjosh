@@ -33,6 +33,21 @@ export function colorFor(category: string) {
 
 export const projects = [
   {
+    id: 'unbounded',
+    title: 'Unbounded',
+    category: 'E-Commerce',
+    description:
+      'Streetwear storefront built around a bold visual identity, expressive product presentation, and a focused shopping experience.',
+    year: '2026',
+    tags: ['HTML', 'CSS', 'JavaScript', 'E-Commerce'],
+    image: 'https://raw.githubusercontent.com/envydoes/unbounded/main/UNBNDED%20%E2%80%94%20Landing%20Page%20v2%402x.png',
+    imageFit: 'cover',
+    badge: 'Live Website',
+    liveUrl: 'https://unbounded-nu.vercel.app/',
+    githubUrl: 'https://github.com/envydoes/unbounded',
+    designUrl: '',
+  },
+  {
     id: 'sumeste-portal',
     title: 'SumEste Portal',
     category: 'Full-Stack',
