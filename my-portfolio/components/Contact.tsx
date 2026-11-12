@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaFacebookF, FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { profile } from '@/lib/data';
 
 export default function Contact() {
   return (
@@ -35,16 +36,6 @@ export default function Contact() {
 
         <div className="mt-10 flex flex-wrap justify-center gap-2 sm:mt-12 sm:gap-3">
           <a
-            href="https://www.facebook.com/Joshngmundo.lV/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook profile"
-            className="inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-3 text-sm text-black/70 transition-colors hover:border-black/40 hover:text-black"
-          >
-            <FaFacebookF size={17} aria-hidden="true" />
-            Facebook
-          </a>
-          <a
             href="https://github.com/envydoes"
             target="_blank"
             rel="noopener noreferrer"
@@ -54,16 +45,15 @@ export default function Contact() {
             <FaGithub size={17} aria-hidden="true" />
             GitHub
           </a>
-          <a
-            href="https://www.instagram.com/envydoes_/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram profile"
-            className="inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-3 text-sm text-black/70 transition-colors hover:border-black/40 hover:text-black"
-          >
-            <FaInstagram size={17} aria-hidden="true" />
-            Instagram
-          </a>
+          {profile.linkedin ? (
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-3 text-sm text-black/70 hover:border-black/40 hover:text-black">
+              <FaLinkedinIn size={17} aria-hidden="true" /> LinkedIn
+            </a>
+          ) : (
+            <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-black/20 px-5 py-3 text-sm text-black/60">
+              <FaLinkedinIn size={17} aria-hidden="true" /> LinkedIn · TODO: Add profile URL
+            </span>
+          )}
         </div>
       </motion.div>
     </section>

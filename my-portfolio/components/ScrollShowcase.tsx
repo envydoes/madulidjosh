@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type PointerEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,12 +13,13 @@ const cards = [
 ];
 
 export default function ScrollShowcase() {
-  const sectionRef = useRef(null);
-  const cardRefs = useRef([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       cardRefs.current.forEach((card) => {
+        if (!card) return;
         gsap.fromTo(
           card,
           { scale: 0.95, y: 60, opacity: 0.5 },
@@ -32,7 +33,8 @@ export default function ScrollShowcase() {
     return () => ctx.revert();
   }, []);
 
-  function handleTilt(e, card) {
+  function handleTilt(e: PointerEvent<HTMLDivElement>, card: HTMLDivElement | null) {
+    if (!card) return;
     const b = card.getBoundingClientRect();
     const px = (e.clientX - b.left) / b.width;
     const py = (e.clientY - b.top) / b.height;
@@ -46,7 +48,8 @@ export default function ScrollShowcase() {
     });
   }
 
-  function resetTilt(card) {
+  function resetTilt(card: HTMLDivElement | null) {
+    if (!card) return;
     gsap.to(card, { rotateX: 0, rotateY: 0, scale: 1, duration: 0.6, ease: 'power3.out' });
   }
 
@@ -56,7 +59,7 @@ export default function ScrollShowcase() {
         {cards.map((c, i) => (
           <div
             key={c.title}
-            ref={(el) => (cardRefs.current[i] = el)}
+            ref={(el) => { cardRefs.current[i] = el; }}
             onPointerMove={(e) => handleTilt(e, cardRefs.current[i])}
             onPointerLeave={() => resetTilt(cardRefs.current[i])}
             className="rounded-2xl border border-black/10 bg-black/5 backdrop-blur-md p-6 will-change-transform"

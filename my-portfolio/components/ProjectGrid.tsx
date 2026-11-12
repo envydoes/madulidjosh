@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { projects } from '@/lib/data';
+import Link from 'next/link';
+import ProjectImage from './ProjectImage';
 
 export default function ProjectGrid() {
   return (
@@ -13,11 +15,8 @@ export default function ProjectGrid() {
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
         {projects.map((p, i) => (
-          <motion.a
+          <motion.article
             key={p.id}
-            href={p.liveUrl || p.githubUrl || p.designUrl || '#'}
-            target={p.liveUrl || p.githubUrl || p.designUrl ? '_blank' : undefined}
-            rel="noopener noreferrer"
             initial={{
               opacity: 0,
               x: i % 2 === 0 ? -48 : 48,
@@ -30,13 +29,9 @@ export default function ProjectGrid() {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: (i % 2) * 0.1 }}
             className="group relative rounded-2xl overflow-hidden border border-black/10 bg-black/5 backdrop-blur-md block"
           >
-            <div className="relative aspect-video overflow-hidden bg-black/40">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={p.image}
-                alt={p.title}
-                className={`w-full h-full ${p.imageFit === 'contain' ? 'object-contain bg-white' : 'object-cover'} transition-transform duration-500 ease-out group-hover:scale-[1.08]`}
-              />
+            <Link href={`/projects/${p.id}`} className="block h-full" aria-label={`View ${p.title} project details`}>
+            <div className="relative aspect-video overflow-hidden bg-neutral-100">
+              <ProjectImage src={p.image} alt={p.imageAlt} contain={p.imageFit === 'contain'} />
               <div className="absolute top-3 left-3 flex gap-2">
                 <span className="rounded-full bg-black/60 backdrop-blur px-3 py-1 text-xs text-white border border-white/20">
                   {p.badge}
@@ -50,6 +45,7 @@ export default function ProjectGrid() {
             <div className="p-4 transition-transform duration-300 ease-out group-hover:-translate-y-1 sm:p-6">
               <h3 className="text-xl font-semibold text-black mb-2">{p.title}</h3>
               <p className="text-sm text-black/60 leading-relaxed mb-4">{p.description}</p>
+              <p className="mb-4 border-l-2 border-emerald-400 pl-3 text-sm leading-relaxed text-black/75"><span className="font-semibold">Objective: </span>{p.objective}</p>
               <div className="flex flex-wrap gap-2">
                 {p.tags.map((tag) => (
                   <span
@@ -60,8 +56,10 @@ export default function ProjectGrid() {
                   </span>
                 ))}
               </div>
+              <span className="mt-6 inline-flex min-h-11 items-center rounded-full bg-black px-5 py-2 text-sm text-white">View project ↗</span>
             </div>
-          </motion.a>
+            </Link>
+          </motion.article>
         ))}
       </div>
     </section>

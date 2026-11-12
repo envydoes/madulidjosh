@@ -1,46 +1,83 @@
 export const techStack = [
-  { name: 'PHP', category: 'Backend' },
-  { name: 'MySQL', category: 'Database' },
-  { name: 'JavaScript', category: 'Frontend' },
-  { name: 'TypeScript', category: 'Frontend' },
-  { name: 'Tailwind CSS', category: 'Frontend' },
-  { name: 'HTML5 & CSS3', category: 'Frontend' },
-  { name: 'Node.js', category: 'Backend' },
-  { name: 'RESTful APIs', category: 'Backend' },
-  { name: 'Docker', category: 'DevOps' },
-  { name: 'Coolify', category: 'DevOps' },
-  { name: 'Git & GitHub', category: 'Tools' },
-  { name: 'Figma', category: 'Design' },
-  { name: 'Claude Code', category: 'AI & Tools' },
-  { name: 'Google Gemini', category: 'AI & Tools' },
-  { name: 'OpenAI', category: 'AI & Tools' },
-  { name: 'Linux / Apache', category: 'DevOps' },
+  { name: 'PHP', category: 'Programming Languages' },
+  { name: 'MySQL', category: 'Databases' },
+  { name: 'JavaScript', category: 'Programming Languages' },
+  { name: 'TypeScript', category: 'Programming Languages' },
+  { name: 'Tailwind CSS', category: 'Frameworks & Styling' },
+  { name: 'HTML5 & CSS3', category: 'Frameworks & Styling' },
+  { name: 'Node.js', category: 'Tools & DevOps' },
+  { name: 'RESTful APIs', category: 'Tools & DevOps' },
+  { name: 'Docker', category: 'Tools & DevOps' },
+  { name: 'Coolify', category: 'Tools & DevOps' },
+  { name: 'Git & GitHub', category: 'Tools & DevOps' },
+  { name: 'Figma', category: 'Tools & DevOps' },
+  { name: 'Claude Code', category: 'AI Tools' },
+  { name: 'Google Gemini', category: 'AI Tools' },
+  { name: 'OpenAI', category: 'AI Tools' },
+  { name: 'Linux / Apache', category: 'Tools & DevOps' },
+];
+
+export const skillGroups = [
+  'Programming Languages', 'Databases', 'Frameworks & Styling', 'Tools & DevOps', 'AI Tools',
 ];
 
 const categoryColor: Record<string, string> = {
-  Backend: '#FF2E2E',
-  Database: '#FF2E2E',
-  Frontend: '#10B981',
-  DevOps: '#38BDF8',
-  Tools: '#38BDF8',
-  Design: '#FF2E2E',
-  'AI & Tools': '#10B981',
+  'Programming Languages': '#FF2E2E',
+  Databases: '#FF2E2E',
+  'Frameworks & Styling': '#10B981',
+  'Tools & DevOps': '#38BDF8',
+  'AI Tools': '#10B981',
 };
 
 export function colorFor(category: string) {
   return categoryColor[category] || '#38BDF8';
 }
 
-export const projects = [
+export const profile = {
+  email: 'madulidjoshuam@gmail.com',
+  github: 'https://github.com/envydoes',
+  linkedin: '', // TODO: Add your LinkedIn profile URL.
+};
+
+export type Project = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  objective: string;
+  objectives: string[];
+  contribution: string;
+  year: string;
+  tags: string[];
+  image: string;
+  imageAlt: string;
+  imageFit: 'cover' | 'contain';
+  badge: string;
+  liveUrl: string;
+  githubUrl: string;
+  designUrl: string;
+  sourceUnavailable?: boolean;
+  liveUnavailable?: boolean;
+};
+
+export const projects: Project[] = [
   {
     id: 'unbounded',
-    title: 'Unbounded',
+    title: 'Unbounded Landing Page',
     category: 'Web Design',
     description:
       'Streetwear storefront built around a bold visual identity, expressive product presentation, and a focused shopping experience.',
+    objective: 'Present a streetwear collection through a clear, visually focused storefront.',
+    objectives: [
+      'Give the streetwear brand a consistent visual identity on the web.',
+      'Make featured products and collections easy to discover.',
+      'Provide a landing page that adapts to different screen sizes.',
+    ],
+    contribution: 'TODO: Describe your role, the pages or features you built, and your individual contribution to Unbounded.',
     year: '2026',
     tags: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
-    image: 'https://raw.githubusercontent.com/envydoes/unbounded/main/UNBNDED%20%E2%80%94%20Landing%20Page%20v2%402x.png',
+    image: '/images/projects/unbounded-cover.webp',
+    imageAlt: 'Unbounded streetwear storefront landing page design',
     imageFit: 'cover',
     badge: 'Landing Page',
     liveUrl: 'https://unbounded-nu.vercel.app/',
@@ -53,12 +90,21 @@ export const projects = [
     category: 'Full-Stack',
     description:
       'Cross-platform resident tracking system built for the Sumacab Este community, helping organize resident information and support efficient local administration.',
+    objective: 'Bring resident information and barangay services together in one portal.',
+    objectives: [
+      'Organize resident information to support local administration.',
+      'Give residents a central place to access barangay services and announcements.',
+      'Support separate access for residents, non-residents, and barangay staff.',
+    ],
+    contribution: 'TODO: Explain your capstone role, the modules you implemented, and how your work fits into the team project.',
     year: '2026',
-    tags: ['PHP', 'MySQL', 'Tailwind CSS', 'Live System'],
-    image: 'https://sum-este-portal.digital/uploads/site/sitelogo_8ba5ce5e050ec6c3.png',
-    imageFit: 'cover',
+    tags: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript'],
+    image: '/images/projects/sumeste-portal-1.png',
+    imageAlt: 'SumEste Portal hero carousel displaying its third photo, the Sumacab Este barangay hall',
+    imageFit: 'contain',
     badge: 'Capstone Project',
     liveUrl: 'https://sum-este-portal.digital',
+    liveUnavailable: true,
     githubUrl: 'https://github.com/envydoes/SumEste-Portal',
     designUrl: '',
   },
@@ -68,13 +114,21 @@ export const projects = [
     category: 'Full-Stack',
     description:
       'A web-based tourism and accommodation platform designed to help visitors discover destinations, plan stays, and explore local experiences.',
+    objective: 'Help visitors explore destinations and accommodation in one place.',
+    objectives: [
+      'Bring destination and accommodation information into a single browsing experience.',
+      'Help visitors explore local experiences while planning a stay.',
+    ],
+    contribution: 'TODO: Describe your role and the specific tourism or accommodation features you designed or developed.',
     year: '2024',
     tags: ['PHP', 'HTML5', 'CSS3', 'JavaScript'],
-    image: 'https://raw.githubusercontent.com/envydoes/aurora/main/images/logo.png',
+    image: '/images/projects/aurora-1.png',
+    imageAlt: 'Aurora Platform landing page with a Dingalan coastal photograph and Plan Your Journey button',
     imageFit: 'cover',
     badge: 'Tourism Platform',
     liveUrl: '',
     githubUrl: 'https://github.com/envydoes/aurora',
+    sourceUnavailable: true,
     designUrl: '',
   },
   {
@@ -83,9 +137,17 @@ export const projects = [
     category: 'UI/UX & Design',
     description:
       'Comprehensive conversing app interface design with home chat, login, cloud space, and 20 supporting high-fidelity screens organized in Figma.',
+    objective: 'Design a clear interface for conversations, sign-in, and cloud space.',
+    objectives: [
+      'Make the chat and sign-in flows easy to understand.',
+      'Keep the visual language consistent across the app screens.',
+      'Organize conversations and cloud space within a coherent app interface.',
+    ],
+    contribution: 'TODO: Identify the screens, user flows, and design decisions you personally contributed to ATOM AI.',
     year: '2024',
-    tags: ['Figma', 'UI/UX', 'Design System', '20 Screens'],
+    tags: ['Figma', 'UI/UX', 'Design System'],
     image: '/images/atom-ai/logo.png',
+    imageAlt: 'ATOM AI robot logo',
     imageFit: 'contain',
     badge: 'Design System',
     liveUrl: '',
@@ -97,7 +159,7 @@ export const projects = [
 export const timeline = [
   {
     year: '2023 — Present',
-    title: 'BS Information Technology (Graduating) — Web System Technology',
+    title: 'BS Information Technology (Graduating) — Web Systems Technology',
     description:
       'Currently studying at Nueva Ecija University of Science and Technology (NEUST) • Nueva Ecija, Philippines.',
   },

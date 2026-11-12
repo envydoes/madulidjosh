@@ -5,13 +5,14 @@ import { timeline } from '@/lib/data';
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="scroll-mt-24 bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
-      <div className="mx-auto mb-10 max-w-4xl md:mb-12">
+    <section id="experience" className="scroll-mt-24 bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
+      <div id="timeline" className="mx-auto mb-10 max-w-6xl scroll-mt-24 md:mb-12">
         <span className="text-xs uppercase tracking-[0.2em] text-black/40">Journey</span>
-        <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Timeline</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Experience &amp; Accomplishments</h2>
       </div>
 
-      <div className="relative mx-auto max-w-4xl border-l border-black/10 pl-7 sm:pl-8">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className="relative border-l border-black/10 pl-7 sm:pl-8">
         {timeline.map((t, i) => (
           <motion.div
             key={t.title}
@@ -33,6 +34,14 @@ export default function Timeline() {
             <p className="text-black/60 text-sm leading-relaxed max-w-2xl">{t.description}</p>
           </motion.div>
         ))}
+      </div>
+      <div className="rounded-2xl border border-black/10 bg-neutral-50 p-6 sm:p-8">
+        <h3 className="text-xl font-semibold text-black">Accomplishments</h3>
+        <ul className="mt-6 space-y-5 text-sm leading-relaxed text-black/65">
+          <li><p className="font-semibold text-black">Dean’s Lister</p><p className="mt-1">1st and 2nd semesters, 2023–2024</p><p>1st semester, 2025</p></li>
+          <li className="border-t border-dashed border-black/20 pt-5">TODO: Add other accomplishments, seminars, contests, or internship/OJT experience, including dates and your role. Include only items you have completed.</li>
+        </ul>
+      </div>
       </div>
     </section>
   );

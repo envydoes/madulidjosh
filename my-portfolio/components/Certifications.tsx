@@ -1,116 +1,70 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { certifications } from '@/lib/data';
 
-export default function Certifications() {
+export default function Certifications({ full = false }: { full?: boolean }) {
   const [active, setActive] = useState<number | null>(null);
-  const [showAll, setShowAll] = useState(false);
-  const visibleCertifications = showAll ? certifications : certifications.slice(0, 3);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const visibleCertifications = full ? certifications : certifications.slice(0, 3);
+  const certificate = active === null ? null : certifications[active];
 
-  function toggleCertifications() {
-    setShowAll((current) => !current);
-    requestAnimationFrame(() => {
-      window.dispatchEvent(new Event('portfolio:content-resize'));
-    });
-  }
+  useEffect(() => {
+    const element = dialog.current;
+    if (active === null || !element) return;
+    element.showModal();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      element.close();
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [active]);
 
   return (
     <section id="certs" className="scroll-mt-24 bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
       <div className="mx-auto mb-10 max-w-6xl md:mb-12">
-        <span className="text-xs uppercase tracking-[0.2em] text-black/40">Verified</span>
-        <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Certifications</h2>
+        <p className="text-xs uppercase tracking-[0.2em] text-black/50">Learning &amp; credentials</p>
+        {full ? <h1 className="mt-3 text-3xl font-bold text-black md:text-4xl">All Certifications</h1> : <h2 className="mt-3 text-3xl font-bold text-black md:text-4xl">Certifications</h2>}
+        {full && <p className="mt-4 text-sm text-black/60">Select a certificate to see the full image and available credential details.</p>}
       </div>
-
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {visibleCertifications.map((c, i) => (
-          <motion.button
-            key={c.title}
-            onClick={() => setActive(i)}
-            initial={{
-              opacity: 0,
-              x: i % 2 === 0 ? -24 : 24,
-              y: 18,
-              rotate: i % 2 === 0 ? -2 : 2,
-              scale: 0.95,
-            }}
-            whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
-            viewport={{ once: true, margin: '-10% 0px' }}
-            transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
-            whileHover={{ scale: 1.03 }}
-            className="text-left rounded-xl overflow-hidden border border-black/10 bg-black/5 backdrop-blur-md"
-          >
-            <div className="aspect-[4/3] bg-black/30 overflow-hidden">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {visibleCertifications.map((entry, index) => (
+          <motion.button key={entry.title} type="button" aria-haspopup="dialog" aria-label={'View ' + entry.title + ' certificate'} onClick={() => setActive(index)}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24, y: 18, rotate: index % 2 === 0 ? -2 : 2, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }} viewport={{ once: true, margin: '-5% 0px' }}
+            transition={{ duration: 0.5, delay: (index % 3) * 0.06 }} whileHover={{ scale: 1.02 }}
+            className="overflow-hidden rounded-xl border border-black/10 bg-neutral-50 text-left">
+            <div className="aspect-[4/3] overflow-hidden bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.image} alt={c.title} className="w-full h-full object-cover" />
+              <img src={entry.image} alt={entry.title + ' certificate issued by ' + entry.issuer} loading="lazy" className="h-full w-full object-contain" />
             </div>
-            <div className="p-3">
-              <p className="text-sm font-medium text-black leading-snug">{c.title}</p>
-              <p className="text-xs text-black/50 mt-1">{c.issuer}</p>
-            </div>
+            <div className="p-4"><p className="text-sm font-medium leading-snug text-black">{entry.title}</p><p className="mt-1 text-xs text-black/60">{entry.issuer}</p></div>
           </motion.button>
         ))}
       </div>
+      {!full && <div className="mx-auto mt-8 max-w-6xl text-center"><Link href="/certifications" className="inline-flex min-h-11 items-center rounded-full border border-black/20 px-5 py-3 text-sm font-medium text-black hover:bg-black hover:text-white">View all certifications ↗</Link></div>}
 
-      {certifications.length > 3 && (
-        <div className="mx-auto mt-8 max-w-6xl text-center">
-          <button
-            type="button"
-            onClick={toggleCertifications}
-            className="rounded-lg border border-black/15 px-5 py-2.5 text-sm font-medium text-black transition-colors hover:bg-black hover:text-white"
-          >
-            {showAll ? 'See less' : 'View all certifications'}
-          </button>
-        </div>
-      )}
-
-      <AnimatePresence>
-        {active !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActive(null)}
-            className="fixed inset-0 z-[60] bg-black/85 backdrop-blur-md flex items-center justify-center p-6"
-          >
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-black/10 bg-white"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={certifications[active].image} alt={certifications[active].title} className="max-h-[70vh] w-full object-contain" />
-              <div className="p-4 sm:p-6">
-                <h3 className="text-lg font-semibold text-black">{certifications[active].title}</h3>
-                <p className="text-sm text-black/50 mt-1">{certifications[active].issuer}</p>
-                {certifications[active].date && (
-                  <p className="mt-2 text-sm text-black/60">Issued {certifications[active].date}</p>
-                )}
-                {certifications[active].credentialId && (
-                  <p className="mt-2 break-all text-xs text-black/50">Credential ID: {certifications[active].credentialId}</p>
-                )}
-                {certifications[active].description && (
-                  <p className="mt-3 text-sm leading-relaxed text-black/70">{certifications[active].description}</p>
-                )}
-                {certifications[active].credentialUrl && (
-                  <a
-                    href={certifications[active].credentialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-block rounded-lg bg-black px-4 py-2 text-sm font-medium text-white hover:bg-black/80"
-                  >
-                    Verify Certificate
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <dialog ref={dialog} onClose={() => setActive(null)} onCancel={() => setActive(null)} onClick={(event) => { if (event.target === event.currentTarget) setActive(null); }}
+        aria-labelledby="certificate-title" data-lenis-prevent className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto rounded-2xl bg-white p-0 text-black shadow-2xl">
+        {certificate && <div>
+          <div className="sticky top-0 z-10 flex justify-end bg-white/95 p-3">
+            <button type="button" autoFocus onClick={() => setActive(null)} className="min-h-11 rounded-full border border-black/20 px-4 text-sm hover:bg-black hover:text-white" aria-label="Close certificate">Close ×</button>
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={certificate.image} alt={certificate.title + ' certificate issued by ' + certificate.issuer} className="max-h-[60dvh] w-full object-contain" />
+          <div className="p-5 sm:p-7">
+            <h2 id="certificate-title" className="text-lg font-semibold">{certificate.title}</h2>
+            <p className="mt-1 text-sm text-black/60">{certificate.issuer}</p>
+            {certificate.date && <p className="mt-2 text-sm text-black/60">Issued {certificate.date}</p>}
+            {certificate.credentialId && <p className="mt-2 break-all text-xs text-black/60">Credential ID: {certificate.credentialId}</p>}
+            {certificate.description && <p className="mt-3 text-sm leading-relaxed text-black/70">{certificate.description}</p>}
+            {certificate.credentialUrl && <a href={certificate.credentialUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex rounded-full bg-black px-5 py-3 text-sm font-medium text-white hover:bg-black/80">Verify Certificate ↗</a>}
+          </div>
+        </div>}
+      </dialog>
     </section>
   );
 }

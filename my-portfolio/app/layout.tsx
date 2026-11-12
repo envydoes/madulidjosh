@@ -14,17 +14,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Joshua M. Madulid — Portfolio",
-  description: "Full-Stack Web Developer & UI/UX Specialist",
+  metadataBase: new URL("https://madulidjoshv2.vercel.app"),
+  title: {
+    default: "Joshua Madulid — Full-Stack Web Developer | UI/UX Design",
+    template: "%s | Joshua Madulid",
+  },
+  description: "Joshua Madulid’s IT portfolio: web development and UI/UX design projects, technical skills, certifications, and education at NEUST in Web Systems Technology.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>

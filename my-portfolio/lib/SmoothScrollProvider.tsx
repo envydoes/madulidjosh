@@ -1,12 +1,15 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
+import { MotionConfig, useReducedMotion } from 'framer-motion';
 import Lenis from '@studio-freight/lenis';
 
 // Wrap your root layout's children with this. Ties Lenis into
 // GSAP's ticker so ScrollTrigger and Lenis stay in sync.
-export default function SmoothScrollProvider({ children }) {
+export default function SmoothScrollProvider({ children }: { children: ReactNode }) {
+  const reducedMotion = useReducedMotion();
   useEffect(() => {
+    if (reducedMotion) return;
     const lenis = new Lenis({
       duration: 1.1,
       easing: (t) => 1 - Math.pow(1 - t, 3),
@@ -14,8 +17,8 @@ export default function SmoothScrollProvider({ children }) {
       touchMultiplier: 1.2,
     });
 
-    let rafId;
-    function raf(time) {
+    let rafId: number;
+    function raf(time: number) {
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
     }
@@ -28,14 +31,16 @@ export default function SmoothScrollProvider({ children }) {
 
     // Intercept all anchor hash-link clicks and smooth-scroll via Lenis
     function handleAnchorClick(e: MouseEvent) {
-      const target = (e.target as HTMLElement).closest('a');
+      if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+      const target = e.target instanceof Element ? e.target.closest('a') : null;
       if (!target) return;
       const href = target.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
-      const el = document.querySelector(href);
+      if (!href || !href.startsWith('#') || href === '#') return;
+      const el = document.getElementById(decodeURIComponent(href.slice(1)));
       if (!el) return;
       e.preventDefault();
-      lenis.scrollTo(el as HTMLElement, { offset: 0, duration: 1.2 });
+      history.pushState(null, '', href);
+      lenis.scrollTo(el, { offset: -96, duration: 1.2 });
     }
 
     function handleContentResize() {
@@ -51,7 +56,7 @@ export default function SmoothScrollProvider({ children }) {
       document.removeEventListener('click', handleAnchorClick);
       window.removeEventListener('portfolio:content-resize', handleContentResize);
     };
-  }, []);
+  }, [reducedMotion]);
 
-  return children;
+  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
 }

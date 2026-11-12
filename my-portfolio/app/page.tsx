@@ -5,23 +5,29 @@ import ProjectGrid from '@/components/ProjectGrid';
 import Timeline from '@/components/Timeline';
 import Certifications from '@/components/Certifications';
 import Contact from '@/components/Contact';
+import About from '@/components/About';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Nav />
+      <main id="main-content">
       <div id="hero" className="scroll-mt-24">
         <Hero />
       </div>
+      <About />
       <div id="stack" className="scroll-mt-24">
         <TechMatrix />
       </div>
       <div id="projects" className="scroll-mt-24">
         <ProjectGrid />
       </div>
-      <Timeline />
       <Certifications />
+      <Timeline />
       <Contact />
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

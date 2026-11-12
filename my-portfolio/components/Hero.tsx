@@ -1,9 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FaFacebookF, FaFilePdf, FaGithub, FaInstagram } from 'react-icons/fa';
+import { motion, type Variants } from 'framer-motion';
+import { FaEnvelope, FaFilePdf, FaGithub } from 'react-icons/fa';
+import { profile } from '@/lib/data';
 
-const nameReveal = {
+const nameReveal: Variants = {
   hidden: { opacity: 0, y: 34, scale: 0.94, rotateX: -8 },
   show: {
     opacity: 1,
@@ -14,7 +15,7 @@ const nameReveal = {
   },
 };
 
-const portraitReveal = {
+const portraitReveal: Variants = {
   hidden: { opacity: 0, y: 120, scale: 0.84, rotateX: 12 },
   show: {
     opacity: 1,
@@ -25,7 +26,7 @@ const portraitReveal = {
   },
 };
 
-const leftReveal = {
+const leftReveal: Variants = {
   hidden: { opacity: 0, x: -64, scale: 0.96, rotateY: 8 },
   show: {
     opacity: 1,
@@ -36,7 +37,7 @@ const leftReveal = {
   },
 };
 
-const rightReveal = {
+const rightReveal: Variants = {
   hidden: { opacity: 0, x: 64, scale: 0.96, rotateY: -8 },
   show: {
     opacity: 1,
@@ -53,9 +54,8 @@ const container = {
 };
 
 const socials = [
-  { label: 'Facebook', icon: <FaFacebookF size={16} />, href: 'https://www.facebook.com/Joshngmundo.lV/' },
-  { label: 'GitHub', icon: <FaGithub size={16} />, href: 'https://github.com/envydoes' },
-  { label: 'Instagram', icon: <FaInstagram size={16} />, href: 'https://www.instagram.com/envydoes_/' },
+  { label: 'GitHub', icon: <FaGithub size={16} aria-hidden="true" />, href: profile.github },
+  { label: 'Email', icon: <FaEnvelope size={16} aria-hidden="true" />, href: 'mailto:' + profile.email },
 ];
 
 export default function Hero() {
@@ -66,7 +66,7 @@ export default function Hero() {
         initial="hidden"
         animate="show"
         style={{ perspective: 1200 }}
-        className="relative min-h-screen px-5 pb-10 pt-24 sm:px-6 lg:px-16 lg:pb-0 lg:pt-28"
+        className="relative min-h-screen px-5 pb-10 pt-24 sm:px-6 lg:min-h-[800px] lg:px-16 lg:pb-0 lg:pt-28"
       >
 
         {/* Big split name — sits behind photo */}
@@ -81,12 +81,12 @@ export default function Hero() {
         {/* Photo — large, centered, in front of name, bleeds to bottom */}
         <motion.div
           variants={portraitReveal}
-          className="relative z-10 mx-auto mt-1 w-[88vw] max-w-[420px] lg:absolute lg:bottom-4 lg:left-1/2 lg:mt-0 lg:w-[80vw] lg:max-w-[1000px] lg:-translate-x-1/2"
+          className="relative z-10 mx-auto mt-1 w-full max-w-[420px] lg:absolute lg:bottom-0 lg:left-1/2 lg:mt-0 lg:w-[70vw] lg:max-w-[850px] lg:-translate-x-1/2"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/cv_img.png"
-            alt="Joshua Madulid"
+            alt="Portrait of Joshua Madulid wearing a black shirt"
             className="h-auto w-full"
           />
         </motion.div>
@@ -97,14 +97,14 @@ export default function Hero() {
           className="relative z-20 mx-auto mt-1 w-full max-w-xl lg:absolute lg:bottom-32 lg:left-[max(1.5rem,calc(50%-32.5vw))] lg:mx-0 lg:mt-0 lg:max-w-[260px]"
         >
           <h2 className="mb-3 text-2xl font-bold leading-tight text-black sm:text-3xl lg:text-4xl">
-            Web Developer
+            Full-Stack Web Developer
           </h2>
           <p className="text-black/50 text-sm leading-relaxed mb-6">
             Building interactive, high-performance web experiences with clean systems underneath.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
-              href="#projects"
+              href="#contact"
               className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-3 text-sm font-medium !text-white transition-colors hover:bg-black/90 sm:px-6"
             >
               Let&apos;s collaborate ↗

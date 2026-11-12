@@ -102,7 +102,7 @@ export const projects = [
 export const timeline = [
   {
     year: '2024 — Present',
-    title: 'Full-Stack Developer & UI/UX Specialist',
+    title: 'Full-Stack Web Developer | UI/UX Design',
     description:
       'Building production systems end-to-end — resident/community portals, inventory dashboards, mobile apps — and designing the interfaces that sit on top of them.',
   },

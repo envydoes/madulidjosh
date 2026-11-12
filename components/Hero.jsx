@@ -34,7 +34,7 @@ export default function Hero() {
         <motion.h1 variants={item} className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
           Full-Stack Web Developer
           <br />
-          <span className="text-white/40">&amp; UI/UX Specialist</span>
+          <span className="text-white/40">| UI/UX Design</span>
         </motion.h1>
       </motion.div>
     </section>

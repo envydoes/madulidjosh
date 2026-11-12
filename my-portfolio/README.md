@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Joshua Madulid — IT Portfolio
 
-## Getting Started
+Next.js portfolio with Home, About Me, Technical Skills, Projects, Certifications, Experience & Accomplishments, and Contact.
 
-First, run the development server:
+The runnable application is this directory, my-portfolio/ within the Git repository. The repository-level app/, components/, and lib/ folders are legacy scaffold files and are not used by this Next.js build.
 
-```bash
+## Run locally
+
+From this directory:
+
+```powershell
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the Local URL printed by Next.js.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+npx tsc --noEmit
+npm run build
+npm run start
+```
 
-## Learn More
+Vercel should continue to use my-portfolio as its Root Directory within the Git repository.
 
-To learn more about Next.js, take a look at the following resources:
+## Content and screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- lib/data.ts: projects, skill groups, education timeline, certificate records, and LinkedIn URL.
+- components/About.tsx: introduction, objective, and education.
+- components/Timeline.tsx: accomplishments.
+- app/projects/[slug]/page.tsx: project detail pages and screenshot captions.
+- public/images/projects/: project covers and the two numbered screenshot slots per project.
+- app/certifications/page.tsx: all existing certificates.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Read [PORTFOLIO_REVIEW.md](PORTFOLIO_REVIEW.md) for the complete TODO checklist, link findings, security scope, validation results, and changed files.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No dependency or deployment-account changes were required.

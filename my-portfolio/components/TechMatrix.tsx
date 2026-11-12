@@ -22,7 +22,7 @@ import {
   SiTypescript,
 } from 'react-icons/si';
 import { TbApi, TbBrandCss3, TbBrandOpenai } from 'react-icons/tb';
-import { techStack, colorFor } from '@/lib/data';
+import { techStack, skillGroups, colorFor } from '@/lib/data';
 
 const techIcons: Record<string, { Icon: IconType; color: string }[]> = {
   PHP: [{ Icon: SiPhp, color: '#777BB4' }],
@@ -62,6 +62,7 @@ function MagneticPill({ name, category, index }: { name: string; category: strin
   const fromX = index % 2 === 0 ? -50 : 50;
 
   function handleMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== 'mouse') return;
     const el = ref.current;
     if (!el) return;
     const b = el.getBoundingClientRect();
@@ -108,14 +109,21 @@ function MagneticPill({ name, category, index }: { name: string; category: strin
 
 export default function TechMatrix() {
   return (
-    <section className="bg-white px-4 py-16 sm:px-6 md:px-16 md:py-24">
-      <div className="mx-auto mb-10 max-w-5xl text-center md:mb-12">
-        <span className="text-xs uppercase tracking-[0.2em] text-black/40">Tech Stack Matrix</span>
-        <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Toolkit</h2>
+    <section className="bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
+      <div className="mx-auto mb-10 max-w-6xl md:mb-12">
+        <span className="text-xs uppercase tracking-[0.2em] text-black/50">My toolkit</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Technical Skills</h2>
       </div>
-      <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-2 sm:gap-3">
-        {techStack.map((t, i) => (
-          <MagneticPill key={t.name} name={t.name} category={t.category} index={i} />
+      <div className="mx-auto max-w-6xl divide-y divide-black/10">
+        {skillGroups.map((group) => (
+          <div key={group} className="grid gap-4 py-6 first:pt-0 md:grid-cols-[190px_1fr] md:gap-8">
+            <h3 className="pt-2 text-sm font-semibold text-black">{group}</h3>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
+              {techStack.filter((tech) => tech.category === group).map((tech, index) => (
+                <MagneticPill key={tech.name} name={tech.name} category={tech.category} index={index} />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>
