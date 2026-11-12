@@ -32,14 +32,19 @@ export default function Timeline() {
             <span className="text-xs uppercase tracking-wide text-emerald-400">{t.year}</span>
             <h3 className="text-xl font-semibold text-black mt-1 mb-2">{t.title}</h3>
             <p className="text-black/60 text-sm leading-relaxed max-w-2xl">{t.description}</p>
+            {t.highlights && (
+              <ul className="mt-4 list-disc space-y-3 pl-4 text-sm leading-relaxed text-black/60">
+                {t.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+              </ul>
+            )}
           </motion.div>
         ))}
       </div>
-      <div className="rounded-2xl border border-black/10 bg-neutral-50 p-6 sm:p-8">
+      <div className="border-t border-black/10 pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
         <h3 className="text-xl font-semibold text-black">Accomplishments</h3>
         <ul className="mt-6 space-y-5 text-sm leading-relaxed text-black/65">
           <li><p className="font-semibold text-black">Dean’s Lister</p><p className="mt-1">1st and 2nd semesters, 2023–2024</p><p>1st semester, 2025</p></li>
-          <li className="border-t border-dashed border-black/20 pt-5">TODO: Add other accomplishments, seminars, contests, or internship/OJT experience, including dates and your role. Include only items you have completed.</li>
+          <li className="border-t border-dashed border-black/20 pt-5">TODO: Add other accomplishments, seminars, or contests, including dates and your role. Include only items you have completed.</li>
         </ul>
       </div>
       </div>

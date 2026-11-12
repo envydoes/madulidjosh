@@ -12,7 +12,7 @@ const item = {
   show: { y: 0, opacity: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const badges = ['Available for Hire', 'Based in Philippines', 'Full-Stack + UI/UX'];
+const badges = ['Available for Hire', 'Based in Philippines', 'Web Developer'];
 
 export default function Hero() {
   return (
@@ -32,7 +32,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1 variants={item} className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
-          Full-Stack Web Developer
+          Web Developer
           <br />
           <span className="text-white/40">| UI/UX Design</span>
         </motion.h1>

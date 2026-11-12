@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://madulidjoshv2.vercel.app"),
   title: {
-    default: "Joshua Madulid — Full-Stack Web Developer | UI/UX Design",
+    default: "Joshua Madulid — Web Developer",
     template: "%s | Joshua Madulid",
   },
   description: "Joshua Madulid’s IT portfolio: web development and UI/UX design projects, technical skills, certifications, and education at NEUST in Web Systems Technology.",

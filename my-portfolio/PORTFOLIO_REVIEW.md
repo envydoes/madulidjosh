@@ -1,14 +1,16 @@
 # Portfolio review — November 13, 2026
 
-The portfolio was updated locally from envydoes/madulidjosh at commit 66e3f0c. The selected workspace contained only incomplete Git metadata, so the current repository was cloned into its my-portfolio subdirectory. The runnable Next.js application is the nested my-portfolio folder. This report records the implementation and local validation.
+The initial portfolio update was committed to envydoes/madulidjosh as 2799a4e. This follow-up separates Education, adds resume experience, simplifies the role title, and completes the screenshot galleries. The selected workspace contained only incomplete Git metadata, so the current repository was cloned into its my-portfolio subdirectory. The runnable Next.js application is the nested my-portfolio folder. This report records the implementation and local validation.
 
 ## Implemented
 
-- Navigation: Home, About Me, Technical Skills, Projects, Certifications, Experience & Accomplishments, Contact.
-- About Me: professional introduction, career objective, NEUST education, graduating status, and Web Systems Technology wording.
+- Navigation: Home, About Me, Education, Technical Skills, Projects, Certifications, Experience & Accomplishments, Contact.
+- About Me: professional introduction and career objective. Education is now a separate section with NEUST, degree, Web Systems Technology specialization, and 2023–present / Graduating status.
+- The hero, page title, and footer now use Web Developer.
+- Education and Experience & Accomplishments use open layouts without card containers.
 - All 16 existing toolkit entries retained and grouped into the five requested categories.
-- Four project pages with descriptions, objectives, technologies, contribution TODOs, source/demo controls, and two screenshot slots each.
-- Original education and programming entries retained; supplied Dean’s Lister entries added.
+- Four project pages with descriptions, objectives, technologies, source/demo controls, and two real screenshots each. SumEste and Aurora contributions are filled from the supplied resume; Unbounded and ATOM contributions remain TODO until confirmed. Screenshot links open the original at full size; ATOM uses a portrait layout.
+- Education and the original programming entry retained. Work Immersion at the Business Permits and Licensing Office (2023), including the three responsibilities in the resume, added to Experience. Dean’s Lister semesters retained.
 - Three home-page certificates retained; /certifications now lists all eight records already in the repository.
 - Certificate dialogs have a close control, Escape handling, modal focus containment, and focus restoration.
 - Email and GitHub remain prominent. LinkedIn is a non-clickable TODO until its actual URL is provided. Facebook and Instagram are in the footer.
@@ -22,21 +24,14 @@ Edit profile/project fields in lib/data.ts.
 
 - [ ] Add your LinkedIn profile URL to profile.linkedin.
 - [ ] Unbounded: write your individual role and contribution.
-- [ ] SumEste: write your capstone role, implemented modules, and individual contribution within the team.
-- [ ] Aurora: write your role and the features you designed or developed.
 - [ ] ATOM AI: write your contribution to screens, user flows, and design decisions.
 - [ ] Restore SumEste hosting or provide another working demo URL; then remove liveUnavailable.
 - [ ] Correct Aurora’s GitHub URL or restore public repository access; then remove sourceUnavailable.
 - [ ] Add Aurora’s live site or recorded demo URL.
 - [ ] Add ATOM AI’s GitHub URL, or confirm it is design-only and replace the source TODO with that explanation.
-- [ ] Add other completed accomplishments, seminars, contests, or internship/OJT entries with dates and your role in components/Timeline.tsx.
-- [ ] Replace public/images/projects/unbounded-1.png and update its screenshot alt text/caption.
-- [ ] Replace public/images/projects/unbounded-2.png and update its screenshot alt text/caption.
-- [ ] Replace public/images/projects/aurora-2.png and update its screenshot alt text/caption.
-- [ ] Replace public/images/projects/atom-ai-design-1.png and update its screenshot alt text/caption.
-- [ ] Replace public/images/projects/atom-ai-design-2.png and update its screenshot alt text/caption.
+- [ ] Add other completed accomplishments, seminars, or contests with dates and your role in components/Timeline.tsx.
 
-Screenshot captions are currently generated in app/projects/[slug]/page.tsx. Remove the relevant TODO wording when replacing each placeholder. Both SumEste screenshots and Aurora’s first screenshot are now real local captures, with accurate captions. Five screenshot placeholders remain.
+Screenshot captions are maintained in app/projects/[slug]/page.tsx. All eight screenshot slots now contain real captures or direct Figma screen exports with descriptive alt text; no screenshot placeholders remain.
 
 ## Broken links found and handling
 
@@ -59,9 +54,27 @@ The SumEste capture uses the original landing.php at commit 891875d, the origina
 
 public/images/projects/aurora-1.png is a capture of the original Aurora index.php header and hero at commit 78d8d51, with its original CSS, logo, and Dingalan coastal photograph. Aurora’s source was accessible through the existing Git connection; its public GitHub URL still returned HTTP 404, so the public-access TODO remains.
 
-Both covers are applied to the home-page project cards and detail pages, with updated alt text and captions. Only screenshot assets were added to the portfolio. No resident records, booking data, credentials, or verification uploads were copied. The separate Aurora preview serves only the original header and hero; it does not restore the booking backend. The SumEste resident count remains unavailable rather than invented. The upstream SumEste and Aurora repositories were not modified.
+Both covers are applied to the home-page project cards and detail pages, with updated alt text and captions. Only screenshot assets were added to the portfolio. No resident records, booking data, credentials, or verification uploads were copied. The isolated Aurora preview renders the original static landing content through the Rooms section; it does not connect to the booking backend. The SumEste resident count remains unavailable rather than invented. The upstream SumEste and Aurora repositories were not modified.
+
+## Latest content and screenshot sources
+
+- Work Immersion and SumEste/Aurora contributions were transcribed from the supplied Joshua_Madulid_Resume.pdf. The resume itself, home address, and phone number were not copied into the portfolio. The education status follows the user’s explicit 2023–present / Graduating wording.
+- Unbounded: live hero and product collection captured from the existing demo URL, which redirects to https://unboundedclo.vercel.app/. The original demo URL remains valid and unchanged.
+- Aurora: second screenshot now shows the original Rooms section rendered locally with its original styles and public image assets. No bookings or credentials were accessed for the capture.
+- ATOM AI: screenshots exported directly from Figma file W3NBVeRn7wP39e3Y5dC1jh, Login node 0:304 and chat node 1308:2274. The user’s Figma prototype remains the working demo link. Its login controls are part of the interface design, not evidence of a deployed authentication backend.
+- Providing the Figma link does not identify an ATOM GitHub repository or personal contribution, so those TODOs remain explicit.
 
 ## Verification
+
+Latest follow-up checks:
+
+- Production build and TypeScript validation passed.
+- npm run lint passed without warnings or errors.
+- Homepage and all four project pages checked at 375px, 768px, and 1280px: no horizontal overflow or missing image alt text; each project has two screenshots.
+- Mobile navigation opens and closes after selecting Education or Experience; both sections remain separate from About Me.
+- Desktop Education and Experience use open layouts; portrait ATOM screenshots retain their proportions and open at full size.
+
+Earlier full rubric verification (before this follow-up):
 
 - npm run build: passed, including TypeScript validation and static generation of all project pages.
 - npx tsc --noEmit: passed.
@@ -82,7 +95,31 @@ No API keys, passwords, private-key files, environment files, or database dumps 
 - [ ] Review the 112 files tracked under uploads/id_verification in the separate SumEste repository before sharing its source link. Their contents were not opened; the directory could contain private identity documents. If private, remove them from public access and address repository history. No such files were copied into this portfolio.
 - [ ] Complete that separate repository privacy review before treating the overall “no private data anywhere” requirement as verified.
 
-## Changed files
+## Files changed in this follow-up
+
+Paths below are relative to the recovered Git repository.
+
+- components/Hero.jsx
+- lib/data.ts
+- my-portfolio/README.md
+- my-portfolio/PORTFOLIO_REVIEW.md
+- my-portfolio/app/layout.tsx
+- my-portfolio/app/page.tsx
+- my-portfolio/app/projects/[slug]/page.tsx
+- my-portfolio/components/About.tsx
+- my-portfolio/components/Education.tsx (new)
+- my-portfolio/components/Footer.tsx
+- my-portfolio/components/Hero.tsx
+- my-portfolio/components/Nav.tsx
+- my-portfolio/components/Timeline.tsx
+- my-portfolio/lib/data.ts
+- my-portfolio/public/images/projects/unbounded-1.png
+- my-portfolio/public/images/projects/unbounded-2.png
+- my-portfolio/public/images/projects/aurora-2.png
+- my-portfolio/public/images/projects/atom-ai-design-1.png
+- my-portfolio/public/images/projects/atom-ai-design-2.png
+
+## Cumulative files changed for the rubric task
 
 The following paths are relative to the recovered Git repository (one level above this report). The runnable app is my-portfolio/.
 
@@ -98,6 +135,7 @@ The following paths are relative to the recovered Git repository (one level abov
 - my-portfolio/app/projects/[slug]/page.tsx
 - my-portfolio/components/About.tsx
 - my-portfolio/components/Certifications.tsx
+- my-portfolio/components/Education.tsx
 - my-portfolio/components/Contact.tsx
 - my-portfolio/components/Footer.tsx
 - my-portfolio/components/Hero.tsx

@@ -6,6 +6,7 @@ import Timeline from '@/components/Timeline';
 import Certifications from '@/components/Certifications';
 import Contact from '@/components/Contact';
 import About from '@/components/About';
+import Education from '@/components/Education';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
       </div>
       <About />
+      <Education />
       <div id="stack" className="scroll-mt-24">
         <TechMatrix />
       </div>

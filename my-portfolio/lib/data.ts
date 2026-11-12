@@ -89,14 +89,14 @@ export const projects: Project[] = [
     title: 'SumEste Portal',
     category: 'Full-Stack',
     description:
-      'Cross-platform resident tracking system built for the Sumacab Este community, helping organize resident information and support efficient local administration.',
+      'A full-stack barangay management and analytics platform for Barangay Sumacab Este, bringing resident records, document requests, beneficiary prioritization, equipment tracking, and business listings into one system.',
     objective: 'Bring resident information and barangay services together in one portal.',
     objectives: [
       'Organize resident information to support local administration.',
       'Give residents a central place to access barangay services and announcements.',
       'Support separate access for residents, non-residents, and barangay staff.',
     ],
-    contribution: 'TODO: Explain your capstone role, the modules you implemented, and how your work fits into the team project.',
+    contribution: 'Designed and developed the barangay management and analytics platform. Implemented resident records management, document request processing, beneficiary prioritization, and equipment tracking; integrated the analytics dashboard and business listings; and deployed the platform to production.',
     year: '2026',
     tags: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript'],
     image: '/images/projects/sumeste-portal-1.png',
@@ -113,13 +113,14 @@ export const projects: Project[] = [
     title: 'Aurora Platform',
     category: 'Full-Stack',
     description:
-      'A web-based tourism and accommodation platform designed to help visitors discover destinations, plan stays, and explore local experiences.',
+      'A web-based resort booking and tourism platform for Dingalan, Aurora, with destination information, room reservations, interactive calendar scheduling, and an administration panel.',
     objective: 'Help visitors explore destinations and accommodation in one place.',
     objectives: [
       'Bring destination and accommodation information into a single browsing experience.',
       'Help visitors explore local experiences while planning a stay.',
+      'Support room reservations and booking management through calendar scheduling and an administration panel.',
     ],
-    contribution: 'TODO: Describe your role and the specific tourism or accommodation features you designed or developed.',
+    contribution: 'Built the resort booking platform with room reservations, interactive calendar scheduling, and an administration panel. Developed responsive user interfaces and backend database queries for booking management.',
     year: '2024',
     tags: ['PHP', 'HTML5', 'CSS3', 'JavaScript'],
     image: '/images/projects/aurora-1.png',
@@ -136,7 +137,7 @@ export const projects: Project[] = [
     title: 'ATOM AI — Conversing App UI/UX',
     category: 'UI/UX & Design',
     description:
-      'Comprehensive conversing app interface design with home chat, login, cloud space, and 20 supporting high-fidelity screens organized in Figma.',
+      'A Figma prototype for an AI conversation app, covering login and signup, chat, archived conversations, image exports, cloud space, and profile settings in a consistent dark interface.',
     objective: 'Design a clear interface for conversations, sign-in, and cloud space.',
     objectives: [
       'Make the chat and sign-in flows easy to understand.',
@@ -158,10 +159,14 @@ export const projects: Project[] = [
 
 export const timeline = [
   {
-    year: '2023 — Present',
-    title: 'BS Information Technology (Graduating) — Web Systems Technology',
-    description:
-      'Currently studying at Nueva Ecija University of Science and Technology (NEUST) • Nueva Ecija, Philippines.',
+    year: '2023',
+    title: 'Work Immersion',
+    description: 'Business Permits and Licensing Office',
+    highlights: [
+      'Assisted in encoding and organizing 500+ business permit records into digital databases.',
+      'Supported daily data management, record-keeping, and office administrative operations.',
+      'Maintained accurate data logs to improve file retrieval efficiency for office personnel.',
+    ],
   },
   {
     year: '2022 — 2023',

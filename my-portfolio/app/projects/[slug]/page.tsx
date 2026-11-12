@@ -16,9 +16,14 @@ export const dynamicParams = false;
 type Props = { params: Promise<{ slug: string }> };
 
 const capturedScreenshotCaptions: Record<string, string> = {
-  'sumeste-portal-1': 'Guest landing page — third carousel photo showing the Sumacab Este barangay hall, captured locally without resident data.',
-  'sumeste-portal-2': 'Guest landing page — original green introduction slide, captured locally with default settings and no resident data.',
-  'aurora-1': 'Aurora landing hero — original Dingalan coastal image, navigation, and introduction rendered locally from the project source.',
+  'unbounded-1': 'Unbounded landing page with its Live Without Limits headline and interactive garment viewer.',
+  'unbounded-2': 'Unbounded collection showcasing the Signature, U, and Live Without Limits graphic tees.',
+  'sumeste-portal-1': 'SumEste Portal landing page — the third carousel photo shows the Sumacab Este barangay hall.',
+  'sumeste-portal-2': 'SumEste Portal landing page — the green introduction slide welcomes residents to barangay services.',
+  'aurora-1': 'Aurora landing page with a Dingalan coastal photograph and Plan Your Journey introduction.',
+  'aurora-2': 'Aurora room listings with accommodation features and reservation options.',
+  'atom-ai-design-1': 'ATOM AI Figma login screen with email, password, Google, and Facebook sign-in options.',
+  'atom-ai-design-2': 'ATOM AI Figma chat screen showing a conversation about interaction design and the message composer.',
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -72,14 +77,16 @@ export default async function ProjectPage({ params }: Props) {
           </div>
 
           <section className="mt-16" aria-labelledby="screenshots-heading">
-            <h2 id="screenshots-heading" className="text-2xl font-bold">Project screenshots</h2>
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <h2 id="screenshots-heading" className="scroll-mt-28 text-2xl font-bold">Project screenshots</h2>
+            <div className={'mt-6 grid gap-6 md:grid-cols-2 ' + (project.id === 'atom-ai-design' ? 'mx-auto max-w-3xl' : '')}>
               {[1, 2].map((number) => {
                 const caption = capturedScreenshotCaptions[project.id + '-' + number]
                   || 'TODO: Replace screenshot ' + number + ' with a real ' + project.title + ' screen and update its alt text.';
                 return (
                   <figure key={number} className="overflow-hidden rounded-2xl border border-black/10 bg-neutral-50">
-                    <div className="aspect-video"><ProjectImage src={'/images/projects/' + project.id + '-' + number + '.png'} alt={caption} contain /></div>
+                    <a href={'/images/projects/' + project.id + '-' + number + '.png'} target="_blank" rel="noopener noreferrer" aria-label={'Open ' + project.title + ' screenshot ' + number + ' at full size'} className={'mx-auto block ' + (project.id === 'atom-ai-design' ? 'aspect-[428/928] max-h-[640px]' : 'aspect-video')}>
+                      <ProjectImage src={'/images/projects/' + project.id + '-' + number + '.png'} alt={caption} contain />
+                    </a>
                     <figcaption className="p-4 text-sm leading-relaxed text-black/60">{caption}</figcaption>
                   </figure>
                 );

@@ -97,7 +97,7 @@ export default function Hero() {
           className="relative z-20 mx-auto mt-1 w-full max-w-xl lg:absolute lg:bottom-32 lg:left-[max(1.5rem,calc(50%-32.5vw))] lg:mx-0 lg:mt-0 lg:max-w-[260px]"
         >
           <h2 className="mb-3 text-2xl font-bold leading-tight text-black sm:text-3xl lg:text-4xl">
-            Full-Stack Web Developer
+            Web Developer
           </h2>
           <p className="text-black/50 text-sm leading-relaxed mb-6">
             Building interactive, high-performance web experiences with clean systems underneath.

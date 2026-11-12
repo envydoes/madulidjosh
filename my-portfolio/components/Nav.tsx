@@ -8,6 +8,7 @@ import { useRef, useState } from 'react';
 const links = [
   { href: '#hero', label: 'Home' },
   { href: '#about', label: 'About Me' },
+  { href: '#education', label: 'Education' },
   { href: '#stack', label: 'Technical Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#certs', label: 'Certifications' },
