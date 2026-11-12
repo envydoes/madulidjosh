@@ -2,6 +2,17 @@
 
 The initial portfolio update was committed to envydoes/madulidjosh as 2799a4e. This follow-up separates Education, adds resume experience, simplifies the role title, and completes the screenshot galleries. The selected workspace contained only incomplete Git metadata, so the current repository was cloned into its my-portfolio subdirectory. The runnable Next.js application is the nested my-portfolio folder. This report records the implementation and local validation.
 
+## Motion follow-up
+
+- Fixed same-page navbar scrolling: Next Link was preventing the click before the old document bubble listener could handle it. The handler now captures same-origin, same-path hash links before Next's navigation, preserves modified/new-tab clicks and downloads, respects the target's scroll margin, and moves keyboard focus to the destination after easing completes.
+- Added Lenis's recommended CSS and explicit duration-based easing. Touch scrolling remains native, and dialogs and the mobile menu retain independent scrolling. Removed an unused asynchronous ScrollTrigger import from the provider.
+- Split the hero into separate eased entrances for both name words, portrait, role, description, collaborate/CV buttons, and social links. Positioning wrappers no longer share transforms with entrance motion.
+- Added reveals to About and Education, section headings, skill labels, and accomplishments; refined the existing card/contact reveals. Effects replay when content re-enters the viewport. Skill-pill hover transforms are separate from their entrance transforms.
+- The preview device reported reduced motion enabled. Added a footer Motion control that saves a site-only full/reduced preference, while first-time visitors retain their device preference. The gallery follows the same choice. This follows the [Motion accessibility guidance](https://motion.dev/docs/react-accessibility); viewport replay uses [Motion's scroll-triggered animation behavior](https://motion.dev/docs/react-scroll-animations).
+- Browser checks recorded intermediate Lenis scroll positions, separate hero opacity values during the stagger, hidden-to-visible section replay, mobile-menu closure, and the final 96px anchor offset. Checked 375px, 768px, and 1280px without horizontal overflow. Reduced mode removes Lenis; full mode enables it without changing operating-system settings.
+
+Files changed for motion: app/globals.css; components/About.tsx, Education.tsx, Hero.tsx, Nav.tsx, Footer.tsx, MotionToggle.tsx (new), Reveal.tsx (new), TechMatrix.tsx, ProjectGrid.tsx, Certifications.tsx, Timeline.tsx, Contact.tsx, ProjectGallery.tsx; lib/MotionPreferences.tsx (new), lib/SmoothScrollProvider.tsx; README.md; PORTFOLIO_REVIEW.md.
+
 ## Latest gallery and experience changes
 
 - Each project now shows exactly two preview screenshots with a See all screenshots button underneath. The full gallery uses a modal carousel, previous/next arrows, keyboard navigation, swipe/drag, a counter, thumbnail selection, and a full-size image link. There is no automatic advancement.

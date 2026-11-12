@@ -53,7 +53,7 @@ export default function Nav() {
       </div>
       <AnimatePresence initial={false}>
         {mobileOpen && (
-          <motion.div id="mobile-navigation" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}
+          <motion.div id="mobile-navigation" data-lenis-prevent initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}
             className="grid max-h-[70dvh] grid-cols-1 gap-1 overflow-y-auto border-t border-black/10 pt-2 sm:grid-cols-2 xl:hidden">
             {links.map((link) => <Link key={link.href} href={hrefFor(link.href)} onClick={() => setMobileOpen(false)} className="rounded-xl px-3 py-3 text-sm text-black/70 hover:bg-black/5 hover:text-black">{link.label}</Link>)}
           </motion.div>

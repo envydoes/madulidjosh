@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { certifications } from '@/lib/data';
+import Reveal from './Reveal';
 
 export default function Certifications({ full = false }: { full?: boolean }) {
   const [active, setActive] = useState<number | null>(null);
@@ -25,16 +26,16 @@ export default function Certifications({ full = false }: { full?: boolean }) {
 
   return (
     <section id="certs" className="scroll-mt-24 bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
-      <div className="mx-auto mb-10 max-w-6xl md:mb-12">
+      <Reveal className="mx-auto mb-10 max-w-6xl md:mb-12">
         <p className="text-xs uppercase tracking-[0.2em] text-black/50">Learning &amp; credentials</p>
         {full ? <h1 className="mt-3 text-3xl font-bold text-black md:text-4xl">All Certifications</h1> : <h2 className="mt-3 text-3xl font-bold text-black md:text-4xl">Certifications</h2>}
         {full && <p className="mt-4 text-sm text-black/60">Select a certificate to see the full image and available credential details.</p>}
-      </div>
+      </Reveal>
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {visibleCertifications.map((entry, index) => (
           <motion.button key={entry.title} type="button" aria-haspopup="dialog" aria-label={'View ' + entry.title + ' certificate'} onClick={() => setActive(index)}
             initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24, y: 18, rotate: index % 2 === 0 ? -2 : 2, scale: 0.95 }}
-            whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }} viewport={{ once: true, margin: '-5% 0px' }}
+            whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }} viewport={{ once: false, amount: 0.12, margin: '0px 0px -32px 0px' }}
             transition={{ duration: 0.5, delay: (index % 3) * 0.06 }} whileHover={{ scale: 1.02 }}
             className="overflow-hidden rounded-xl border border-black/10 bg-neutral-50 text-left">
             <div className="aspect-[4/3] overflow-hidden bg-white">

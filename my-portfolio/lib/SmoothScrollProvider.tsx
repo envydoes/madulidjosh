@@ -1,20 +1,26 @@
 'use client';
 
 import { useEffect, type ReactNode } from 'react';
-import { MotionConfig, useReducedMotion } from 'framer-motion';
+import { MotionConfig } from 'framer-motion';
 import Lenis from '@studio-freight/lenis';
+import { MotionPreferencesProvider, useMotionPreferences } from './MotionPreferences';
 
-// Wrap your root layout's children with this. Ties Lenis into
-// GSAP's ticker so ScrollTrigger and Lenis stay in sync.
 export default function SmoothScrollProvider({ children }: { children: ReactNode }) {
-  const reducedMotion = useReducedMotion();
+  return <MotionPreferencesProvider><ScrollMotion>{children}</ScrollMotion></MotionPreferencesProvider>;
+}
+
+function ScrollMotion({ children }: { children: ReactNode }) {
+  const { reducedMotion } = useMotionPreferences();
   useEffect(() => {
+    document.documentElement.dataset.motion = reducedMotion ? 'reduced' : 'full';
     if (reducedMotion) return;
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 0.9,
+      lerp: 0,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
-      touchMultiplier: 1.2,
+      syncTouch: false,
+      touchMultiplier: 1,
     });
 
     let rafId: number;
@@ -24,39 +30,53 @@ export default function SmoothScrollProvider({ children }: { children: ReactNode
     }
     rafId = requestAnimationFrame(raf);
 
-    // Sync with GSAP ScrollTrigger if it's loaded elsewhere in the tree.
-    import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
-      lenis.on('scroll', ScrollTrigger.update);
-    }).catch(() => {});
-
-    // Intercept all anchor hash-link clicks and smooth-scroll via Lenis
+    // Capture same-page anchors before Next Link handles them and prevents default.
     function handleAnchorClick(e: MouseEvent) {
-      if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+      if (e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
       const target = e.target instanceof Element ? e.target.closest('a') : null;
-      if (!target) return;
+      if (!target || target.hasAttribute('download') || (target.target && target.target !== '_self')) return;
       const href = target.getAttribute('href');
-      if (!href || !href.startsWith('#') || href === '#') return;
-      const el = document.getElementById(decodeURIComponent(href.slice(1)));
+      if (!href) return;
+      const url = new URL(href, window.location.href);
+      if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;
+      let id: string;
+      try { id = decodeURIComponent(url.hash.slice(1)); } catch { return; }
+      const el = document.getElementById(id);
       if (!el) return;
       e.preventDefault();
-      history.pushState(null, '', href);
-      lenis.scrollTo(el, { offset: -96, duration: 1.2 });
+      if (location.hash !== url.hash) history.pushState(null, '', url.hash);
+      const offset = -(parseFloat(getComputedStyle(el).scrollMarginTop) || 96);
+      const distance = Math.abs(el.getBoundingClientRect().top + offset);
+      lenis.scrollTo(el, {
+        offset,
+        duration: Math.min(1.55, Math.max(0.65, distance / 3200)),
+        onComplete: () => {
+          // Keep keyboard navigation at the destination without another scroll jump.
+          if (!el.hasAttribute('tabindex')) {
+            el.setAttribute('tabindex', '-1');
+            el.addEventListener('blur', () => el.removeAttribute('tabindex'), { once: true });
+          }
+          el.focus({ preventScroll: true });
+        },
+      });
     }
 
     function handleContentResize() {
       lenis.resize();
     }
 
-    document.addEventListener('click', handleAnchorClick);
+    document.addEventListener('click', handleAnchorClick, true);
     window.addEventListener('portfolio:content-resize', handleContentResize);
 
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
-      document.removeEventListener('click', handleAnchorClick);
+      document.removeEventListener('click', handleAnchorClick, true);
       window.removeEventListener('portfolio:content-resize', handleContentResize);
     };
   }, [reducedMotion]);
 
-  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
+  // Remount motion elements when this explicit preference changes so their
+  // transform policy and entrance sequence both update immediately.
+  return <MotionConfig key={reducedMotion ? 'reduced' : 'full'} reducedMotion={reducedMotion ? 'always' : 'never'}>{children}</MotionConfig>;
 }

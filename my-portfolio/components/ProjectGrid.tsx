@@ -4,14 +4,15 @@ import { motion } from 'framer-motion';
 import { projects } from '@/lib/data';
 import Link from 'next/link';
 import ProjectImage from './ProjectImage';
+import Reveal from './Reveal';
 
 export default function ProjectGrid() {
   return (
     <section className="bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
-      <div className="mx-auto mb-10 max-w-6xl md:mb-12">
+      <Reveal className="mx-auto mb-10 max-w-6xl md:mb-12">
         <span className="text-xs uppercase tracking-[0.2em] text-black/40">Selected Works</span>
         <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Projects &amp; Systems</h2>
-      </div>
+      </Reveal>
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
         {projects.map((p, i) => (
@@ -19,13 +20,13 @@ export default function ProjectGrid() {
             key={p.id}
             initial={{
               opacity: 0,
-              x: i % 2 === 0 ? -48 : 48,
+              x: i % 2 === 0 ? -30 : 30,
               y: 24,
-              rotate: i % 2 === 0 ? -3 : 3,
-              scale: 0.95,
+              rotate: i % 2 === 0 ? -1 : 1,
+              scale: 0.985,
             }}
             whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
-            viewport={{ once: true, margin: '-10% 0px' }}
+            viewport={{ once: false, amount: 0.12, margin: '0px 0px -32px 0px' }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: (i % 2) * 0.1 }}
             className="group relative rounded-2xl overflow-hidden border border-black/10 bg-black/5 backdrop-blur-md block"
           >

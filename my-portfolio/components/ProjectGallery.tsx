@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useMotionPreferences } from '@/lib/MotionPreferences';
 import ProjectImage from '@/components/ProjectImage';
 import type { ProjectScreenshot } from '@/lib/projectScreenshots';
 
@@ -17,7 +18,7 @@ export default function ProjectGallery({ title, screenshots, portrait = false }:
   const opener = useRef<HTMLButtonElement | null>(null);
   const thumbnails = useRef<HTMLDivElement>(null);
   const gestureStart = useRef<{ x: number; y: number } | null>(null);
-  const reducedMotion = useReducedMotion();
+  const { reducedMotion } = useMotionPreferences();
   const screenshot = screenshots[active];
 
   useEffect(() => {

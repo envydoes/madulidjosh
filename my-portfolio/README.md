@@ -42,3 +42,9 @@ Read [PORTFOLIO_REVIEW.md](PORTFOLIO_REVIEW.md) for the complete TODO checklist,
 No dependency or deployment-account changes were required.
 
 SumEste admin, resident, and non-resident images are local captures with explicitly labelled demonstration accounts and data. No live resident information or supplied credentials are included.
+
+## Motion
+
+The navbar and same-page links use Lenis easing; native touch scrolling remains enabled. Hero elements enter separately and section reveals replay when they return to view. The footer's Motion button switches between full and reduced effects and saves the choice for this site. Without a saved choice, the site follows the device's reduced-motion preference.
+
+Motion lives in lib/SmoothScrollProvider.tsx, lib/MotionPreferences.tsx, components/Reveal.tsx, and components/Hero.tsx.

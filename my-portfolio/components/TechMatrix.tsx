@@ -23,6 +23,8 @@ import {
 } from 'react-icons/si';
 import { TbApi, TbBrandCss3, TbBrandOpenai } from 'react-icons/tb';
 import { techStack, skillGroups, colorFor } from '@/lib/data';
+import Reveal from './Reveal';
+import { useMotionPreferences } from '@/lib/MotionPreferences';
 
 const techIcons: Record<string, { Icon: IconType; color: string }[]> = {
   PHP: [{ Icon: SiPhp, color: '#777BB4' }],
@@ -59,10 +61,10 @@ function MagneticPill({ name, category, index }: { name: string; category: strin
   const springX = useSpring(x, { stiffness: 200, damping: 15 });
   const springY = useSpring(y, { stiffness: 200, damping: 15 });
   const color = colorFor(category);
-  const fromX = index % 2 === 0 ? -50 : 50;
+  const { reducedMotion } = useMotionPreferences();
 
   function handleMove(e: React.PointerEvent<HTMLDivElement>) {
-    if (e.pointerType !== 'mouse') return;
+    if (reducedMotion || e.pointerType !== 'mouse') return;
     const el = ref.current;
     if (!el) return;
     const b = el.getBoundingClientRect();
@@ -76,15 +78,12 @@ function MagneticPill({ name, category, index }: { name: string; category: strin
   }
 
   return (
+    <Reveal direction={index % 2 === 0 ? 'left' : 'right'} delay={index * 0.04}>
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: fromX, y: 12, rotate: index % 2 === 0 ? -3 : 3, scale: 0.92 }}
-      whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-10% 0px' }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
-      style={{ x: springX, y: springY }}
+      style={{ x: reducedMotion ? 0 : springX, y: reducedMotion ? 0 : springY }}
       whileHover={{
         backgroundColor: 'rgba(255,255,255,0.09)',
         borderColor: color,
@@ -104,20 +103,21 @@ function MagneticPill({ name, category, index }: { name: string; category: strin
       </span>
       {name}
     </motion.div>
+    </Reveal>
   );
 }
 
 export default function TechMatrix() {
   return (
     <section className="bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
-      <div className="mx-auto mb-10 max-w-6xl md:mb-12">
+      <Reveal className="mx-auto mb-10 max-w-6xl md:mb-12">
         <span className="text-xs uppercase tracking-[0.2em] text-black/50">My toolkit</span>
         <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Technical Skills</h2>
-      </div>
+      </Reveal>
       <div className="mx-auto max-w-6xl divide-y divide-black/10">
         {skillGroups.map((group) => (
           <div key={group} className="grid gap-4 py-6 first:pt-0 md:grid-cols-[190px_1fr] md:gap-8">
-            <h3 className="pt-2 text-sm font-semibold text-black">{group}</h3>
+            <Reveal direction="left"><h3 className="pt-2 text-sm font-semibold text-black">{group}</h3></Reveal>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {techStack.filter((tech) => tech.category === group).map((tech, index) => (
                 <MagneticPill key={tech.name} name={tech.name} category={tech.category} index={index} />
