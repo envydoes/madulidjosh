@@ -5,6 +5,8 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ProjectImage from '@/components/ProjectImage';
 import ProjectLinks from '@/components/ProjectLinks';
+import ProjectGallery from '@/components/ProjectGallery';
+import { projectScreenshots } from '@/lib/projectScreenshots';
 import { projects } from '@/lib/data';
 
 export function generateStaticParams() {
@@ -14,17 +16,6 @@ export function generateStaticParams() {
 export const dynamicParams = false;
 
 type Props = { params: Promise<{ slug: string }> };
-
-const capturedScreenshotCaptions: Record<string, string> = {
-  'unbounded-1': 'Unbounded landing page with its Live Without Limits headline and interactive garment viewer.',
-  'unbounded-2': 'Unbounded collection showcasing the Signature, U, and Live Without Limits graphic tees.',
-  'sumeste-portal-1': 'SumEste Portal landing page — the third carousel photo shows the Sumacab Este barangay hall.',
-  'sumeste-portal-2': 'SumEste Portal landing page — the green introduction slide welcomes residents to barangay services.',
-  'aurora-1': 'Aurora landing page with a Dingalan coastal photograph and Plan Your Journey introduction.',
-  'aurora-2': 'Aurora room listings with accommodation features and reservation options.',
-  'atom-ai-design-1': 'ATOM AI Figma login screen with email, password, Google, and Facebook sign-in options.',
-  'atom-ai-design-2': 'ATOM AI Figma chat screen showing a conversation about interaction design and the message composer.',
-};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -76,23 +67,7 @@ export default async function ProjectPage({ params }: Props) {
             </section>
           </div>
 
-          <section className="mt-16" aria-labelledby="screenshots-heading">
-            <h2 id="screenshots-heading" className="scroll-mt-28 text-2xl font-bold">Project screenshots</h2>
-            <div className={'mt-6 grid gap-6 md:grid-cols-2 ' + (project.id === 'atom-ai-design' ? 'mx-auto max-w-3xl' : '')}>
-              {[1, 2].map((number) => {
-                const caption = capturedScreenshotCaptions[project.id + '-' + number]
-                  || 'TODO: Replace screenshot ' + number + ' with a real ' + project.title + ' screen and update its alt text.';
-                return (
-                  <figure key={number} className="overflow-hidden rounded-2xl border border-black/10 bg-neutral-50">
-                    <a href={'/images/projects/' + project.id + '-' + number + '.png'} target="_blank" rel="noopener noreferrer" aria-label={'Open ' + project.title + ' screenshot ' + number + ' at full size'} className={'mx-auto block ' + (project.id === 'atom-ai-design' ? 'aspect-[428/928] max-h-[640px]' : 'aspect-video')}>
-                      <ProjectImage src={'/images/projects/' + project.id + '-' + number + '.png'} alt={caption} contain />
-                    </a>
-                    <figcaption className="p-4 text-sm leading-relaxed text-black/60">{caption}</figcaption>
-                  </figure>
-                );
-              })}
-            </div>
-          </section>
+          <ProjectGallery title={project.title} screenshots={projectScreenshots[project.id] || []} portrait={project.id === 'atom-ai-design'} />
           <div className="mt-12"><Link href="/#contact" className="inline-flex rounded-full bg-black px-6 py-3 text-sm text-white hover:bg-black/80">Get in touch ↗</Link></div>
         </article>
       </main>

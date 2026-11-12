@@ -2,6 +2,42 @@
 
 The initial portfolio update was committed to envydoes/madulidjosh as 2799a4e. This follow-up separates Education, adds resume experience, simplifies the role title, and completes the screenshot galleries. The selected workspace contained only incomplete Git metadata, so the current repository was cloned into its my-portfolio subdirectory. The runnable Next.js application is the nested my-portfolio folder. This report records the implementation and local validation.
 
+## Latest gallery and experience changes
+
+- Each project now shows exactly two preview screenshots with a See all screenshots button underneath. The full gallery uses a modal carousel, previous/next arrows, keyboard navigation, swipe/drag, a counter, thumbnail selection, and a full-size image link. There is no automatic advancement.
+- ATOM AI: all 36 top-level Figma frames are included, including app screens, dialogs, and named prototype transition states. The browser exported 39 layers; three standalone support assets (a one-pixel image, message toolbar, and timer) were excluded because they are not screens. The Figma connector hit its Starter export quota, so the user signed in and the remaining images were downloaded through Figma’s normal Export control.
+- SumEste: seven screenshots — the requested third-carousel-photo cover, admin dashboard, admin landing page, resident services panel, resident landing page, non-resident landing page, and original guest introduction. The first two previews are the cover and admin dashboard.
+- SumEste’s public site still returned HTTP 530. The existing local MariaDB instance failed to start with database integrity/privilege-table errors. It was not repaired, imported, or replaced. A separate local-only database on port 3307 was initialized from schema statements only, then seeded with three explicitly named Demo accounts. No production data inserts, uploaded IDs, environment files, or supplied account credentials were copied.
+- The new SumEste images carry a visible Portfolio preview · Demo data badge. Their gallery titles and alt text also identify the demonstration data. The original PHP views and authentication flow were used. The isolated preview needed missing dependencies and schema fields; these changes exist only outside the portfolio and were not pushed to either project repository. The upstream non-resident file has existing merge markers in its hidden mobile navigation; no claim is made that the whole SumEste application was repaired.
+- Removed the other accomplishments/seminars/contests TODO because the user confirmed there are no additional entries. Dean’s Lister remains.
+- Changed the experience title to Business Permits and Licensing Office and removed the duplicate Work Immersion heading; the year and responsibilities remain.
+
+Validation for this update:
+
+- `npm run lint`, `npm run build` (including TypeScript validation), and `git diff --check` passed.
+- All four project routes returned HTTP 200, each with exactly two preview figures and a See all screenshots button. All 47 gallery assets returned HTTP 200 with image content types.
+- Production preview checked at 375px, 768px, and 1280px. The homepage and galleries had no horizontal overflow; portrait and landscape galleries fit their viewports.
+- Verified previous/next navigation, wraparound, thumbnail selection, arrow keys, Home/End, swipe/drag, Escape, and restored focus/scrolling after closing. The production gallery also wraps Tab and Shift+Tab within its controls.
+- Confirmed the Business Permits and Licensing Office heading and the absence of the extra accomplishments TODO. No browser console errors were recorded during the final homepage checks.
+
+Gallery files added or changed in this update:
+
+- components/ProjectGallery.tsx (new)
+- lib/projectScreenshots.ts (new)
+- app/projects/[slug]/page.tsx
+- components/Timeline.tsx
+- lib/data.ts
+- README.md
+- PORTFOLIO_REVIEW.md
+- public/images/projects/atom-ai/screen-*.png (34 new images, plus the two existing exports)
+- public/images/projects/sumeste-portal-admin-dashboard.jpg
+- public/images/projects/sumeste-portal-admin-landing.jpg
+- public/images/projects/sumeste-portal-resident-panel.jpg
+- public/images/projects/sumeste-portal-resident-landing.jpg
+- public/images/projects/sumeste-portal-nonresident-landing.jpg
+
+Earlier implementation notes below describe the previous rubric update and its checks.
+
 ## Implemented
 
 - Navigation: Home, About Me, Education, Technical Skills, Projects, Certifications, Experience & Accomplishments, Contact.
@@ -29,9 +65,8 @@ Edit profile/project fields in lib/data.ts.
 - [ ] Correct Aurora’s GitHub URL or restore public repository access; then remove sourceUnavailable.
 - [ ] Add Aurora’s live site or recorded demo URL.
 - [ ] Add ATOM AI’s GitHub URL, or confirm it is design-only and replace the source TODO with that explanation.
-- [ ] Add other completed accomplishments, seminars, or contests with dates and your role in components/Timeline.tsx.
 
-Screenshot captions are maintained in app/projects/[slug]/page.tsx. All eight screenshot slots now contain real captures or direct Figma screen exports with descriptive alt text; no screenshot placeholders remain.
+Screenshot order, titles, and alt text are maintained in lib/projectScreenshots.ts. Each page shows two previews; See all screenshots opens the full carousel. No screenshot placeholders remain.
 
 ## Broken links found and handling
 

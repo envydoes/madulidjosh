@@ -160,8 +160,8 @@ export const projects: Project[] = [
 export const timeline = [
   {
     year: '2023',
-    title: 'Work Immersion',
-    description: 'Business Permits and Licensing Office',
+    title: 'Business Permits and Licensing Office',
+    description: '',
     highlights: [
       'Assisted in encoding and organizing 500+ business permit records into digital databases.',
       'Supported daily data management, record-keeping, and office administrative operations.',
