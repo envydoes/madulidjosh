@@ -26,30 +26,10 @@ export const projectScreenshots: Record<string, ProjectScreenshot[]> = {
       "alt": "SumEste admin dashboard with navigation, summary cards, charts, and three clearly labelled sample accounts in an isolated demo database."
     },
     {
-      "src": "/images/projects/sumeste-portal-admin-landing.jpg",
-      "title": "Admin landing page \u00b7 demo data",
-      "alt": "SumEste administrator landing page with management services, rendered locally with sample accounts."
-    },
-    {
       "src": "/images/projects/sumeste-portal-resident-panel.jpg",
       "title": "Resident services \u00b7 demo data",
       "alt": "SumEste resident panel with beneficiary applications, document requests, equipment borrowing, and an empty demo request history."
     },
-    {
-      "src": "/images/projects/sumeste-portal-resident-landing.jpg",
-      "title": "Resident landing page \u00b7 demo data",
-      "alt": "SumEste resident landing page signed in as Demo Resident with resident services and My Panel navigation."
-    },
-    {
-      "src": "/images/projects/sumeste-portal-nonresident-landing.jpg",
-      "title": "Non-resident landing page \u00b7 demo data",
-      "alt": "SumEste non-resident landing page signed in as Demo Visitor, showing the community services introduction."
-    },
-    {
-      "src": "/images/projects/sumeste-portal-2.png",
-      "title": "Welcome to SumEste",
-      "alt": "SumEste Portal guest introduction slide welcoming residents to barangay services."
-    }
   ],
   "aurora": [
     {
