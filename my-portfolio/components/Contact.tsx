@@ -39,15 +39,15 @@ export default function Contact() {
             <FaGithub size={17} aria-hidden="true" />
             GitHub
           </a>
-          {profile.linkedin ? (
-            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-3 text-sm text-black/70 hover:border-black/40 hover:text-black">
-              <FaLinkedinIn size={17} aria-hidden="true" /> LinkedIn
-            </a>
-          ) : (
-            <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-black/20 px-5 py-3 text-sm text-black/60">
-              <FaLinkedinIn size={17} aria-hidden="true" /> LinkedIn · TODO: Add profile URL
-            </span>
-          )}
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+            className="inline-flex items-center gap-2 rounded-full border border-black/15 px-5 py-3 text-sm text-black/70 hover:border-black/40"
+          >
+            <FaLinkedinIn size={17} aria-hidden="true" /> LinkedIn
+          </a>
         </Reveal>
       </div>
     </section>

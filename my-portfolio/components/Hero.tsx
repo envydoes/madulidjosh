@@ -1,13 +1,14 @@
 'use client';
 
 import { motion, type Variants } from 'framer-motion';
-import { FaEnvelope, FaFilePdf, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaFilePdf, FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { profile } from '@/lib/data';
 import { useMotionPreferences } from '@/lib/MotionPreferences';
 import { revealEase } from './Reveal';
 
 const socials = [
   { label: 'GitHub', icon: <FaGithub size={16} aria-hidden="true" />, href: profile.github },
+  { label: 'LinkedIn', icon: <FaLinkedinIn size={16} aria-hidden="true" />, href: profile.linkedin },
   { label: 'Email', icon: <FaEnvelope size={16} aria-hidden="true" />, href: 'mailto:' + profile.email },
 ];
 

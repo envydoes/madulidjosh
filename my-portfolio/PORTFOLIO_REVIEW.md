@@ -8,7 +8,7 @@ The initial portfolio update was committed to envydoes/madulidjosh as 2799a4e. T
 - Added Lenis's recommended CSS and explicit duration-based easing. Touch scrolling remains native, and dialogs and the mobile menu retain independent scrolling. Removed an unused asynchronous ScrollTrigger import from the provider.
 - Split the hero into separate eased entrances for both name words, portrait, role, description, collaborate/CV buttons, and social links. Positioning wrappers no longer share transforms with entrance motion.
 - Added reveals to About and Education, section headings, skill labels, and accomplishments; refined the existing card/contact reveals. Effects replay when content re-enters the viewport. Skill-pill hover transforms are separate from their entrance transforms.
-- The preview device reported reduced motion enabled. Added a footer Motion control that saves a site-only full/reduced preference, while first-time visitors retain their device preference. The gallery follows the same choice. This follows the [Motion accessibility guidance](https://motion.dev/docs/react-accessibility); viewport replay uses [Motion's scroll-triggered animation behavior](https://motion.dev/docs/react-scroll-animations).
+- The preview device reported reduced motion enabled. At the owner's explicit request, full motion is now the default in both the server-rendered page and client state, independent of the device preference. The footer Motion control still allows visitors to deliberately save reduced effects. The gallery follows the same site preference. Viewport replay uses [Motion's scroll-triggered animation behavior](https://motion.dev/docs/react-scroll-animations).
 - Browser checks recorded intermediate Lenis scroll positions, separate hero opacity values during the stagger, hidden-to-visible section replay, mobile-menu closure, and the final 96px anchor offset. Checked 375px, 768px, and 1280px without horizontal overflow. Reduced mode removes Lenis; full mode enables it without changing operating-system settings.
 
 Files changed for motion: app/globals.css; components/About.tsx, Education.tsx, Hero.tsx, Nav.tsx, Footer.tsx, MotionToggle.tsx (new), Reveal.tsx (new), TechMatrix.tsx, ProjectGrid.tsx, Certifications.tsx, Timeline.tsx, Contact.tsx, ProjectGallery.tsx; lib/MotionPreferences.tsx (new), lib/SmoothScrollProvider.tsx; README.md; PORTFOLIO_REVIEW.md.
@@ -60,7 +60,7 @@ Earlier implementation notes below describe the previous rubric update and its c
 - Education and the original programming entry retained. Work Immersion at the Business Permits and Licensing Office (2023), including the three responsibilities in the resume, added to Experience. Dean’s Lister semesters retained.
 - Three home-page certificates retained; /certifications now lists all eight records already in the repository.
 - Certificate dialogs have a close control, Escape handling, modal focus containment, and focus restoration.
-- Email and GitHub remain prominent. LinkedIn is a non-clickable TODO until its actual URL is provided. Facebook and Instagram are in the footer.
+- Email, GitHub, and LinkedIn remain prominent. Facebook and Instagram are in the footer.
 - Page metadata, alt text, skip link, reduced-motion support, and responsive navigation updated.
 - Production builds now validate TypeScript. Existing typing problems in Hero, SmoothScrollProvider, and ScrollShowcase were fixed.
 - Fonts, light palette, rounded cards/pills, outline name treatment, and entrance animations retained.
@@ -69,7 +69,6 @@ Earlier implementation notes below describe the previous rubric update and its c
 
 Edit profile/project fields in lib/data.ts.
 
-- [ ] Add your LinkedIn profile URL to profile.linkedin.
 - [ ] Unbounded: write your individual role and contribution.
 - [ ] ATOM AI: write your contribution to screens, user flows, and design decisions.
 - [ ] Restore SumEste hosting or provide another working demo URL; then remove liveUnavailable.
@@ -90,7 +89,7 @@ Screenshot order, titles, and alt text are maintained in lib/projectScreenshots.
 
 Unbounded’s live site and repository, the SumEste repository, the GitHub profile, ATOM’s Figma URL, Facebook, Instagram, and both existing credential URLs responded HTTP 200. HTTP success does not independently verify login-gated content, credential authenticity, or Figma sharing permissions.
 
-The old “View all certifications” control was an in-page toggle, not a broken URL. It is now a real /certifications page. Missing LinkedIn, Aurora demo, and ATOM source URLs are explicit TODOs, not dummy links.
+The old “View all certifications” control was an in-page toggle, not a broken URL. It is now a real /certifications page. Missing Aurora demo and ATOM source URLs are explicit TODOs, not dummy links.
 
 ## Updated project covers
 

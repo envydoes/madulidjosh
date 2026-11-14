@@ -36,7 +36,7 @@ export function colorFor(category: string) {
 export const profile = {
   email: 'madulidjoshuam@gmail.com',
   github: 'https://github.com/envydoes',
-  linkedin: '', // TODO: Add your LinkedIn profile URL.
+  linkedin: 'https://www.linkedin.com/in/joshua-madulid-a86637449/',
 };
 
 export type Project = {
