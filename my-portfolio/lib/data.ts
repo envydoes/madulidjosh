@@ -76,7 +76,7 @@ export const projects: Project[] = [
     contribution: 'Commissioned landing page for a client streetwear brand. Designed and developed the responsive single-page experience, including the visual layout, product presentation, brand styling, and responsive interactions.',
     year: '2026',
     tags: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
-    image: '/images/projects/unbounded-cover.webp',
+    image: '/images/projects/unbounded-1.png',
     imageAlt: 'Unbounded streetwear storefront landing page design',
     imageFit: 'cover',
     badge: 'Landing Page',

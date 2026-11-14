@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import ProjectImage from '@/components/ProjectImage';
-import ProjectLinks from '@/components/ProjectLinks';
 import ProjectGallery from '@/components/ProjectGallery';
 import { projectScreenshots } from '@/lib/projectScreenshots';
 import { projects } from '@/lib/data';
@@ -34,15 +33,11 @@ export default async function ProjectPage({ params }: Props) {
       <main id="main-content" className="bg-white px-5 pb-20 pt-28 text-black sm:px-6 md:px-16 md:pt-36">
         <article className="mx-auto max-w-6xl">
           <Link href="/#projects" className="inline-flex min-h-11 items-center text-sm text-black/60 hover:text-black">← Back to projects</Link>
-          <header className="mt-8 grid items-start gap-8 lg:grid-cols-[1.4fr_1fr]">
+          <header className="mt-8">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-black/50">{project.badge} · {project.year}</p>
               <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">{project.title}</h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-black/65">{project.description}</p>
-            </div>
-            <div className="rounded-2xl border border-black/10 bg-neutral-50 p-6">
-              <h2 className="mb-5 text-sm font-semibold">Explore this project</h2>
-              <ProjectLinks project={project} />
             </div>
           </header>
 
