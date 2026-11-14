@@ -56,7 +56,7 @@ Earlier implementation notes below describe the previous rubric update and its c
 - The hero, page title, and footer now use Web Developer.
 - Education and Experience & Accomplishments use open layouts without card containers.
 - All 16 existing toolkit entries retained and grouped into the five requested categories.
-- Four project pages with descriptions, objectives, technologies, source/demo controls, and two real screenshots each. SumEste and Aurora contributions are filled from the supplied resume; Unbounded and ATOM contributions remain TODO until confirmed. Screenshot links open the original at full size; ATOM uses a portrait layout.
+- Four project pages with descriptions, objectives, technologies, source/demo controls, and two real screenshots each. SumEste, Aurora, and Unbounded contributions are filled; ATOM contribution remains TODO until confirmed. Screenshot links open the original at full size; ATOM uses a portrait layout.
 - Education and the original programming entry retained. Work Immersion at the Business Permits and Licensing Office (2023), including the three responsibilities in the resume, added to Experience. Dean’s Lister semesters retained.
 - Three home-page certificates retained; /certifications now lists all eight records already in the repository.
 - Certificate dialogs have a close control, Escape handling, modal focus containment, and focus restoration.
@@ -69,11 +69,9 @@ Earlier implementation notes below describe the previous rubric update and its c
 
 Edit profile/project fields in lib/data.ts.
 
-- [ ] Unbounded: write your individual role and contribution.
 - [ ] ATOM AI: write your contribution to screens, user flows, and design decisions.
 - [ ] Restore SumEste hosting or provide another working demo URL; then remove liveUnavailable.
 - [ ] Correct Aurora’s GitHub URL or restore public repository access; then remove sourceUnavailable.
-- [ ] Add Aurora’s live site or recorded demo URL.
 - [ ] Add ATOM AI’s GitHub URL, or confirm it is design-only and replace the source TODO with that explanation.
 
 Screenshot order, titles, and alt text are maintained in lib/projectScreenshots.ts. Each page shows two previews; See all screenshots opens the full carousel. No screenshot placeholders remain.
@@ -82,14 +80,14 @@ Screenshot order, titles, and alt text are maintained in lib/projectScreenshots.
 
 | Existing destination | Observed result | Change |
 | --- | --- | --- |
-| https://sum-este-portal.digital | HTTP 530 | Preserved URL in project data; disabled offline demo control with a restore/demo TODO. Cards now open working local detail pages. |
+| https://sum-este-portal.digital | HTTP 530 | Preserved URL in project data; disabled offline demo control. Cards now open working local detail pages. |
 | https://sum-este-portal.digital/uploads/site/sitelogo_8ba5ce5e050ec6c3.png | HTTP 530 | Replaced remote image with the real local SumEste hero capture. |
-| https://github.com/envydoes/aurora | HTTP 404 | Preserved URL in project data; disabled source control with a correction/access TODO. |
+| https://github.com/envydoes/aurora | HTTP 404 | Preserved URL in project data; disabled source control because the repository is unavailable. |
 | https://raw.githubusercontent.com/envydoes/aurora/main/images/logo.png | HTTP 404 | Replaced with a local capture of Aurora’s original landing hero. |
 
 Unbounded’s live site and repository, the SumEste repository, the GitHub profile, ATOM’s Figma URL, Facebook, Instagram, and both existing credential URLs responded HTTP 200. HTTP success does not independently verify login-gated content, credential authenticity, or Figma sharing permissions.
 
-The old “View all certifications” control was an in-page toggle, not a broken URL. It is now a real /certifications page. Missing Aurora demo and ATOM source URLs are explicit TODOs, not dummy links.
+The old “View all certifications” control was an in-page toggle, not a broken URL. It is now a real /certifications page. Aurora’s supplied live URL is retained as offline, and ATOM’s missing source URL remains an explicit TODO.
 
 ## Updated project covers
 

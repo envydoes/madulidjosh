@@ -11,7 +11,7 @@ export default function ProjectLinks({ project }: { project: Project }) {
         {sourceReady ? (
           <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className={buttonClass + ' text-black transition-colors hover:bg-black hover:text-white'}>Source Code ↗</a>
         ) : (
-          <button type="button" disabled className={buttonClass + ' cursor-not-allowed bg-neutral-100 text-black/50'}>Source Code · TODO</button>
+          <button type="button" disabled className={buttonClass + ' cursor-not-allowed bg-neutral-100 text-black/50'}>Source Code · Unavailable</button>
         )}
         {demoUrl ? (
           <a href={demoUrl} target="_blank" rel="noopener noreferrer" className={buttonClass + ' bg-black text-white transition-colors hover:bg-black/80'}>
@@ -23,8 +23,8 @@ export default function ProjectLinks({ project }: { project: Project }) {
           </button>
         )}
       </div>
-      {!sourceReady && <p className="text-sm leading-relaxed text-black/60">{project.sourceUnavailable ? 'TODO: Update the Aurora GitHub URL or restore public access; the existing repository returns 404.' : 'TODO: Add a GitHub repository URL, or confirm that this is a design-only project with no source repository.'}</p>}
-      {!demoUrl && <p className="text-sm leading-relaxed text-black/60">{project.liveUnavailable ? 'TODO: Restore the SumEste deployment or provide a working demo URL. The former deployment is currently offline.' : 'TODO: Add a live site or recorded demo URL for Aurora.'}</p>}
+      {!sourceReady && <p className="text-sm leading-relaxed text-black/60">{project.sourceUnavailable ? 'The source repository is currently unavailable.' : 'No public source repository is available for this project.'}</p>}
+      {!demoUrl && <p className="text-sm leading-relaxed text-black/60">{project.liveUnavailable ? 'The live site is currently offline.' : 'No live site or recorded demo is available for this project.'}</p>}
     </div>
   );
 }
