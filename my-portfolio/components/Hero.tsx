@@ -36,7 +36,12 @@ export default function Hero() {
         <div className="relative z-10 mx-auto mt-1 w-full max-w-[420px] lg:absolute lg:bottom-0 lg:left-1/2 lg:mt-0 lg:w-[70vw] lg:max-w-[850px] lg:-translate-x-1/2">
           <motion.div data-hero-reveal="portrait" variants={entrance(0, 88, 0.36, 0.94)} initial="hidden" whileInView="show" viewport={viewport} style={{ transformOrigin: '50% 100%' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/cv_img.png" alt="Portrait of Joshua Madulid wearing a black shirt" fetchPriority="high" className="h-auto w-full" />
+            <img
+              src="/images/cv_img.png"
+              alt="Portrait of Joshua Madulid wearing a black shirt"
+              fetchPriority="high"
+              className="h-auto w-full [mask-image:linear-gradient(to_bottom,black_0%,black_82%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_82%,transparent_100%)]"
+            />
           </motion.div>
         </div>
 
@@ -51,9 +56,9 @@ export default function Hero() {
               className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-3 text-sm font-medium !text-white transition-colors hover:bg-black/90 sm:px-6">
               Let&apos;s collaborate ↗
             </motion.a>
-            <motion.a data-hero-reveal="cv" variants={entrance(-16, 18, 0.9)} href="/Joshua_Madulid_CV.pdf" download="Joshua_Madulid_CV.pdf" whileHover={reducedMotion ? undefined : { y: -3 }} whileTap={reducedMotion ? undefined : { scale: 0.97 }}
+            <motion.a data-hero-reveal="resume" variants={entrance(-16, 18, 0.9)} href="/Joshua_Madulid_Resume.pdf" download="Joshua_Madulid_Resume.pdf" whileHover={reducedMotion ? undefined : { y: -3 }} whileTap={reducedMotion ? undefined : { scale: 0.97 }}
               className="inline-flex items-center gap-2 rounded-full border border-black/20 px-4 py-3 text-sm font-medium text-black/70 transition-colors hover:border-black/50 hover:text-black sm:px-5">
-              <FaFilePdf size={15} aria-hidden="true" /> Download CV
+              <FaFilePdf size={15} aria-hidden="true" /> Download Resume
             </motion.a>
           </motion.div>
         </motion.div>

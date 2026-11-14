@@ -1,5 +1,4 @@
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import MotionToggle from './MotionToggle';
 
 export default function Footer() {
   return (
@@ -9,7 +8,6 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
           <a href="https://www.facebook.com/Joshngmundo.lV/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-black"><FaFacebookF aria-hidden="true" />Facebook</a>
           <a href="https://www.instagram.com/envydoes_/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 hover:text-black"><FaInstagram aria-hidden="true" />Instagram</a>
-          <MotionToggle />
         </div>
       </div>
     </footer>
