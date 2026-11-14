@@ -130,7 +130,6 @@ export const projects: Project[] = [
     liveUrl: 'https://auroratravel.com',
     liveUnavailable: true,
     githubUrl: 'https://github.com/envydoes/aurora',
-    sourceUnavailable: true,
     designUrl: '',
   },
   {

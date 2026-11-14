@@ -71,7 +71,6 @@ Edit profile/project fields in lib/data.ts.
 
 - [ ] ATOM AI: write your contribution to screens, user flows, and design decisions.
 - [ ] Restore SumEste hosting or provide another working demo URL; then remove liveUnavailable.
-- [ ] Correct Aurora’s GitHub URL or restore public repository access; then remove sourceUnavailable.
 - [ ] Add ATOM AI’s GitHub URL, or confirm it is design-only and replace the source TODO with that explanation.
 
 Screenshot order, titles, and alt text are maintained in lib/projectScreenshots.ts. Each page shows two previews; See all screenshots opens the full carousel. No screenshot placeholders remain.
@@ -82,12 +81,11 @@ Screenshot order, titles, and alt text are maintained in lib/projectScreenshots.
 | --- | --- | --- |
 | https://sum-este-portal.digital | HTTP 530 | Preserved URL in project data; disabled offline demo control. Cards now open working local detail pages. |
 | https://sum-este-portal.digital/uploads/site/sitelogo_8ba5ce5e050ec6c3.png | HTTP 530 | Replaced remote image with the real local SumEste hero capture. |
-| https://github.com/envydoes/aurora | HTTP 404 | Preserved URL in project data; disabled source control because the repository is unavailable. |
 | https://raw.githubusercontent.com/envydoes/aurora/main/images/logo.png | HTTP 404 | Replaced with a local capture of Aurora’s original landing hero. |
 
 Unbounded’s live site and repository, the SumEste repository, the GitHub profile, ATOM’s Figma URL, Facebook, Instagram, and both existing credential URLs responded HTTP 200. HTTP success does not independently verify login-gated content, credential authenticity, or Figma sharing permissions.
 
-The old “View all certifications” control was an in-page toggle, not a broken URL. It is now a real /certifications page. Aurora’s supplied live URL is retained as offline, and ATOM’s missing source URL remains an explicit TODO.
+The old “View all certifications” control was an in-page toggle, not a broken URL. It is now a real /certifications page. Aurora’s GitHub source link is available, its supplied live URL is retained as offline, and ATOM’s missing source URL remains an explicit TODO.
 
 ## Updated project covers
 
@@ -95,7 +93,7 @@ public/images/projects/sumeste-portal-1.png now captures the third carousel phot
 
 The SumEste capture uses the original landing.php at commit 891875d, the original photo assets, default site settings, and compiled Tailwind CSS. public/images/projects/sumeste-portal-2.png preserves the previous green introduction capture as the second actual screenshot.
 
-public/images/projects/aurora-1.png is a capture of the original Aurora index.php header and hero at commit 78d8d51, with its original CSS, logo, and Dingalan coastal photograph. Aurora’s source was accessible through the existing Git connection; its public GitHub URL still returned HTTP 404, so the public-access TODO remains.
+public/images/projects/aurora-1.png is a capture of the original Aurora index.php header and hero at commit 78d8d51, with its original CSS, logo, and Dingalan coastal photograph.
 
 Both covers are applied to the home-page project cards and detail pages, with updated alt text and captions. Only screenshot assets were added to the portfolio. No resident records, booking data, credentials, or verification uploads were copied. The isolated Aurora preview renders the original static landing content through the Rooms section; it does not connect to the booking backend. The SumEste resident count remains unavailable rather than invented. The upstream SumEste and Aurora repositories were not modified.
 
