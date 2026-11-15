@@ -1,0 +1,1 @@
+Screenshot preview of the original Aurora index.php header and hero at commit 78d8d51. Uses the original CSS, logo, and hero photograph. Only public-facing hero markup is served; no booking backend, database configuration, or credentials are copied.

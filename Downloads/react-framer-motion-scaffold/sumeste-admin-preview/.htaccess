@@ -1,0 +1,40 @@
+# Force UTF-8 encoding for all responses
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+RewriteBase /
+
+# Do not expose directory listings.
+Options -Indexes
+DirectoryIndex landing.php
+
+# Keep real files and directories working as-is.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Root request should load the site homepage instead of showing the directory index.
+RewriteRule ^/?$ landing.php [L]
+
+# Detect the original scheme. Behind a reverse proxy (Traefik/Cloudflare Tunnel),
+# Apache itself sees plain HTTP, so trust X-Forwarded-Proto when present.
+# Falls back to Apache's own HTTPS var for local XAMPP / direct TLS setups.
+RewriteCond %{HTTP:X-Forwarded-Proto} =https [OR]
+RewriteCond %{HTTPS} =on
+RewriteRule ^ - [E=PROTO:https]
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ - [E=PROTO:http]
+
+# Redirect .php URLs to clean URLs (scheme forced explicitly to avoid
+# Apache emitting http:// in the Location header when behind a proxy).
+# GET/HEAD only — never redirect POST, PUT, DELETE, etc. A 301/302 causes
+# browsers to downgrade the follow-up request to GET and drop the body,
+# which silently destroyed form submissions (e.g. profile saves, file uploads).
+RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+RewriteCond %{THE_REQUEST} \s/+([^\s?]+)\.php(?:[\s?]|$) [NC]
+RewriteRule ^ %{ENV:PROTO}://%{HTTP_HOST}/%1 [R=301,L]
+
+# Internally map clean URLs to existing .php files.
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L,QSA]
