@@ -48,7 +48,7 @@ main { overflow-x: clip; }
 dialog::backdrop { background: rgb(0 0 0 / 80%); }
 
 .loading-screen {
-  animation: loading-screen-fallback 0.55s 1.8s forwards;
+  animation: loading-screen-fallback 0.45s 0.9s forwards;
 }
 
 @keyframes loading-screen-fallback {
