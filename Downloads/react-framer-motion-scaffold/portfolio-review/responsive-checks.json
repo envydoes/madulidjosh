@@ -1,0 +1,146 @@
+[
+  {
+    "client": 360,
+    "missingAlts": 0,
+    "path": "/",
+    "scrollWidth": 360,
+    "title": "JOSHUA MADULID",
+    "viewport": 375
+  },
+  {
+    "client": 360,
+    "missingAlts": 0,
+    "path": "/certifications",
+    "scrollWidth": 360,
+    "title": "All Certifications",
+    "viewport": 375
+  },
+  {
+    "client": 360,
+    "missingAlts": 0,
+    "path": "/projects/unbounded",
+    "scrollWidth": 360,
+    "title": "Unbounded Landing Page",
+    "viewport": 375
+  },
+  {
+    "client": 360,
+    "missingAlts": 0,
+    "path": "/projects/sumeste-portal",
+    "scrollWidth": 360,
+    "title": "SumEste Portal",
+    "viewport": 375
+  },
+  {
+    "client": 360,
+    "missingAlts": 0,
+    "path": "/projects/aurora",
+    "scrollWidth": 360,
+    "title": "Aurora Platform",
+    "viewport": 375
+  },
+  {
+    "client": 360,
+    "missingAlts": 0,
+    "path": "/projects/atom-ai-design",
+    "scrollWidth": 360,
+    "title": "ATOM AI — Conversing App UI/UX",
+    "viewport": 375
+  },
+  {
+    "client": 753,
+    "missingAlts": 0,
+    "path": "/",
+    "scrollWidth": 753,
+    "title": "JOSHUA MADULID",
+    "viewport": 768
+  },
+  {
+    "client": 753,
+    "missingAlts": 0,
+    "path": "/certifications",
+    "scrollWidth": 753,
+    "title": "All Certifications",
+    "viewport": 768
+  },
+  {
+    "client": 753,
+    "missingAlts": 0,
+    "path": "/projects/unbounded",
+    "scrollWidth": 753,
+    "title": "Unbounded Landing Page",
+    "viewport": 768
+  },
+  {
+    "client": 753,
+    "missingAlts": 0,
+    "path": "/projects/sumeste-portal",
+    "scrollWidth": 753,
+    "title": "SumEste Portal",
+    "viewport": 768
+  },
+  {
+    "client": 753,
+    "missingAlts": 0,
+    "path": "/projects/aurora",
+    "scrollWidth": 753,
+    "title": "Aurora Platform",
+    "viewport": 768
+  },
+  {
+    "client": 753,
+    "missingAlts": 0,
+    "path": "/projects/atom-ai-design",
+    "scrollWidth": 753,
+    "title": "ATOM AI — Conversing App UI/UX",
+    "viewport": 768
+  },
+  {
+    "client": 1265,
+    "missingAlts": 0,
+    "path": "/",
+    "scrollWidth": 1265,
+    "title": "JOSHUA MADULID",
+    "viewport": 1280
+  },
+  {
+    "client": 1265,
+    "missingAlts": 0,
+    "path": "/certifications",
+    "scrollWidth": 1265,
+    "title": "All Certifications",
+    "viewport": 1280
+  },
+  {
+    "client": 1265,
+    "missingAlts": 0,
+    "path": "/projects/unbounded",
+    "scrollWidth": 1265,
+    "title": "Unbounded Landing Page",
+    "viewport": 1280
+  },
+  {
+    "client": 1265,
+    "missingAlts": 0,
+    "path": "/projects/sumeste-portal",
+    "scrollWidth": 1265,
+    "title": "SumEste Portal",
+    "viewport": 1280
+  },
+  {
+    "client": 1265,
+    "missingAlts": 0,
+    "path": "/projects/aurora",
+    "scrollWidth": 1265,
+    "title": "Aurora Platform",
+    "viewport": 1280
+  },
+  {
+    "client": 1265,
+    "missingAlts": 0,
+    "path": "/projects/atom-ai-design",
+    "scrollWidth": 1265,
+    "title": "ATOM AI — Conversing App UI/UX",
+    "viewport": 1280
+  }
+]

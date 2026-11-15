@@ -1,0 +1,3 @@
+Local screenshot preview of SumEste landing.php at commit 891875d. Uses the original template, default site settings, compiled Tailwind CSS, and public decorative assets. No database, uploads, user records, or credentials are included. Resident count is intentionally unavailable. This is a visual preview, not a running service backend.
+
+Carousel photos restored from the project assets. Order was recovered read-only from the local tbl_hero_images table file, ordered by sort_order then id as in site_config.php. The third photo is hero_9ea1dfe949809fd6.jpg (same as assets/bghero8.jpg), displayed on the fourth overall slide after the green introduction. The capture query parameter disables auto-advance for screenshots only. No resident records are loaded.
