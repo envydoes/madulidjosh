@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useRef, useState } from 'react';
+import Logo from './Logo';
 
 const links = [
   { href: '#hero', label: 'Home' },
@@ -34,9 +35,7 @@ export default function Nav() {
       className={'fixed left-1/2 top-3 z-50 w-[calc(100%-1.5rem)] max-w-lg -translate-x-1/2 rounded-2xl border border-black/10 bg-white/95 px-3 py-2 backdrop-blur-xl xl:top-4 xl:w-auto xl:max-w-none xl:rounded-full xl:px-2 ' + (shrunk ? 'xl:py-1.5' : 'xl:py-2.5')}
     >
       <div className="flex items-center justify-between gap-2 xl:hidden">
-        <Link href={hrefFor('#hero')} onClick={() => setMobileOpen(false)} className="py-2 pl-2 text-sm font-semibold tracking-tight text-black">
-          Joshua <span className="font-normal text-black/50">Madulid</span>
-        </Link>
+        <Logo href={hrefFor('#hero')} showName className="pl-1" />
         <div className="flex items-center gap-2">
           <Link href={hrefFor('#contact')} onClick={() => setMobileOpen(false)} className="rounded-full bg-black px-4 py-3 text-xs font-medium text-white hover:bg-black/80">Let's Talk</Link>
           <button ref={menuButton} type="button" aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileOpen} aria-controls="mobile-navigation"
@@ -49,6 +48,7 @@ export default function Nav() {
         </div>
       </div>
       <div className="hidden items-center gap-1 xl:flex">
+        <Logo href={hrefFor('#hero')} className="mr-2" />
         {links.map((link) => <Link key={link.href} href={hrefFor(link.href)} className="whitespace-nowrap rounded-full px-4 py-3 text-sm text-black/70 transition-colors hover:bg-black/10 hover:text-black">{link.label}</Link>)}
       </div>
       <AnimatePresence initial={false}>

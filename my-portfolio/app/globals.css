@@ -47,6 +47,18 @@ main { overflow-x: clip; }
 
 dialog::backdrop { background: rgb(0 0 0 / 80%); }
 
+.loading-screen {
+  animation: loading-screen-fallback 0.55s 1.8s forwards;
+}
+
+@keyframes loading-screen-fallback {
+  to {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
