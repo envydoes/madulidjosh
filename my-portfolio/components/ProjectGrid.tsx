@@ -28,9 +28,9 @@ export default function ProjectGrid() {
             whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
             viewport={{ once: false, amount: 0.12, margin: '0px 0px -32px 0px' }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: (i % 2) * 0.1 }}
-            className="group relative rounded-2xl overflow-hidden border border-black/10 bg-black/5 backdrop-blur-md block"
+            className="group relative h-full rounded-2xl overflow-hidden border border-black/10 bg-black/5 backdrop-blur-md block"
           >
-            <Link href={`/projects/${p.id}`} className="block h-full" aria-label={`View ${p.title} project details`}>
+            <Link href={`/projects/${p.id}`} className="flex h-full flex-col" aria-label={`View ${p.title} project details`}>
             <div className="relative aspect-video overflow-hidden bg-neutral-100">
               <ProjectImage src={p.image} alt={p.imageAlt} contain={p.imageFit === 'contain'} />
               <div className="absolute top-3 left-3 flex gap-2">
@@ -43,10 +43,10 @@ export default function ProjectGrid() {
               </div>
             </div>
 
-            <div className="p-4 transition-transform duration-300 ease-out group-hover:-translate-y-1 sm:p-6">
+            <div className="flex flex-1 flex-col p-4 transition-transform duration-300 ease-out group-hover:-translate-y-1 sm:p-6">
               <h3 className="text-xl font-semibold text-black mb-2">{p.title}</h3>
-              <p className="text-sm text-black/60 leading-relaxed mb-4">{p.description}</p>
-              <p className="mb-4 border-l-2 border-emerald-400 pl-3 text-sm leading-relaxed text-black/75"><span className="font-semibold">Objective: </span>{p.objective}</p>
+              <p className="mb-4 min-h-[4.5rem] text-sm leading-relaxed text-black/60">{p.description}</p>
+              <p className="mb-4 min-h-[3rem] border-l-2 border-emerald-400 pl-3 text-sm leading-relaxed text-black/75"><span className="font-semibold">Objective: </span>{p.objective}</p>
               <div className="flex flex-wrap gap-2">
                 {p.tags.map((tag) => (
                   <span
@@ -57,7 +57,7 @@ export default function ProjectGrid() {
                   </span>
                 ))}
               </div>
-              <span className="mt-6 inline-flex min-h-11 items-center rounded-full bg-black px-5 py-2 text-sm text-white">View project ↗</span>
+              <span className="mt-auto inline-flex min-h-11 items-center self-start rounded-full bg-black px-5 py-2 text-sm text-white">View project ↗</span>
             </div>
             </Link>
           </motion.article>
