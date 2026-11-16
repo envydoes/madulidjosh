@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   },
   description: "Joshua Madulid’s IT portfolio: web development and UI/UX design projects, technical skills, certifications, and education at NEUST in Web Systems Technology.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
