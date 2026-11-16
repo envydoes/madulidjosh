@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/lib/SmoothScrollProvider";
+import { ThemePreferencesProvider } from "@/lib/ThemePreferences";
 import LoadingScreen from "@/components/LoadingScreen";
 
 const geistSans = Geist({
@@ -22,9 +23,9 @@ export const metadata: Metadata = {
   },
   description: "Joshua Madulid’s IT portfolio: web development and UI/UX design projects, technical skills, certifications, and education at NEUST in Web Systems Technology.",
   icons: {
-    icon: "/logo-mark.svg",
-    shortcut: "/logo-mark.svg",
-    apple: "/logo-mark.svg",
+    icon: "/images/cv_img.png",
+    shortcut: "/images/cv_img.png",
+    apple: "/images/cv_img.png",
   },
 };
 
@@ -38,7 +39,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="skip-link">Skip to content</a>
         <LoadingScreen />
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <ThemePreferencesProvider>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </ThemePreferencesProvider>
       </body>
     </html>
   );

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Logo from './Logo';
+import ThemeToggle from './ThemeToggle';
 
 const links = [
   { href: '#hero', label: 'Home' },
@@ -37,6 +38,7 @@ export default function Nav() {
       <div className="flex items-center justify-between gap-2 xl:hidden">
         <Logo href={hrefFor('#hero')} showName className="pl-1" />
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Link href={hrefFor('#contact')} onClick={() => setMobileOpen(false)} className="rounded-full bg-black px-4 py-3 text-xs font-medium text-white hover:bg-black/80">Let's Talk</Link>
           <button ref={menuButton} type="button" aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileOpen} aria-controls="mobile-navigation"
             onClick={() => setMobileOpen((open) => !open)}
@@ -50,6 +52,7 @@ export default function Nav() {
       <div className="hidden items-center gap-1 xl:flex">
         <Logo href={hrefFor('#hero')} className="mr-2" />
         {links.map((link) => <Link key={link.href} href={hrefFor(link.href)} className="whitespace-nowrap rounded-full px-4 py-3 text-sm text-black/70 transition-colors hover:bg-black/10 hover:text-black">{link.label}</Link>)}
+        <ThemeToggle />
       </div>
       <AnimatePresence initial={false}>
         {mobileOpen && (

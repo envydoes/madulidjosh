@@ -12,8 +12,26 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Keep the established light portfolio palette in every system theme. */
 :root { color-scheme: light; }
+
+html[data-theme='dark'] {
+  --background: #111416;
+  --foreground: #f5f5f5;
+  color-scheme: dark;
+}
+
+html[data-theme='dark'] body { background: var(--background); }
+html[data-theme='dark'] [class~="bg-white"] { background-color: #111416 !important; }
+html[data-theme='dark'] [class~="bg-neutral-100"] { background-color: #1c2225 !important; }
+html[data-theme='dark'] [class~="bg-black"] { background-color: #f5f5f5 !important; color: #111416 !important; }
+html[data-theme='dark'] [class~="bg-black/5"] { background-color: rgb(255 255 255 / 0.06) !important; }
+html[data-theme='dark'] [class~="bg-black/10"] { background-color: rgb(255 255 255 / 0.1) !important; }
+html[data-theme='dark'] [class*="border-black/"] { border-color: rgb(255 255 255 / 0.16) !important; }
+html[data-theme='dark'] [class~="text-black"],
+html[data-theme='dark'] [class*="text-black/"] { color: #f5f5f5 !important; }
+html[data-theme='dark'] [class~="text-white"] { color: #111416 !important; }
+html[data-theme='dark'] .loading-screen { background: #111416 !important; }
+html[data-theme='dark'] :focus-visible { outline-color: #f5f5f5; }
 
 body {
   background: var(--background);

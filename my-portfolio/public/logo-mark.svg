@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="logo-title">
-  <title id="logo-title">Joshua Madulid logo</title>
-  <rect width="128" height="128" rx="20" fill="#142f3a"/>
-  <text x="36" y="86" fill="#fff" font-family="Baskerville, 'Times New Roman', serif" font-size="70" font-style="italic" letter-spacing="-8">J</text>
-  <text x="54" y="86" fill="#fff" font-family="Baskerville, 'Times New Roman', serif" font-size="70" font-style="italic" letter-spacing="-8">M</text>
-  <path d="M24 91c15 12 48 15 78-2" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2.5"/>
-  <path d="M45 18c-2 12-1 24 2 34" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
-</svg>
