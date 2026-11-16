@@ -37,7 +37,6 @@ export default function Nav() {
       <div className="flex items-center justify-between gap-2 xl:hidden">
         <Link href={hrefFor('#hero')} className="pl-1 text-sm font-semibold tracking-tight text-black">Josh</Link>
         <div className="flex items-center gap-2">
-          <ThemeToggle />
           <Link href={hrefFor('#contact')} onClick={() => setMobileOpen(false)} className="rounded-full bg-black px-4 py-3 text-xs font-medium text-white hover:bg-black/80">Let's Talk</Link>
           <button ref={menuButton} type="button" aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileOpen} aria-controls="mobile-navigation"
             onClick={() => setMobileOpen((open) => !open)}
@@ -58,6 +57,7 @@ export default function Nav() {
           <motion.div id="mobile-navigation" data-lenis-prevent initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}
             className="grid max-h-[70dvh] grid-cols-1 justify-items-start gap-1 overflow-y-auto border-t border-black/10 pt-2 text-left sm:grid-cols-2 xl:hidden">
             {links.map((link) => <Link key={link.href} href={hrefFor(link.href)} onClick={() => setMobileOpen(false)} className="rounded-xl px-3 py-3 text-sm text-black/70 hover:bg-black/5 hover:text-black">{link.label}</Link>)}
+            <div className="px-3 py-2"><ThemeToggle /></div>
           </motion.div>
         )}
       </AnimatePresence>
