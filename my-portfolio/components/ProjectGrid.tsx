@@ -47,7 +47,7 @@ export default function ProjectGrid() {
               <h3 className="text-xl font-semibold text-black mb-2">{p.title}</h3>
               <p className="mb-4 min-h-[4.5rem] text-sm leading-relaxed text-black/60">{p.description}</p>
               <p className="mb-4 min-h-[3rem] border-l-2 border-emerald-400 pl-3 text-sm leading-relaxed text-black/75"><span className="font-semibold">Objective: </span>{p.objective}</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="mb-3 flex flex-wrap gap-2">
                 {p.tags.map((tag) => (
                   <span
                     key={tag}

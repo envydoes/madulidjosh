@@ -3,6 +3,8 @@ export const techStack = [
   { name: 'MySQL', category: 'Databases' },
   { name: 'JavaScript', category: 'Programming Languages' },
   { name: 'TypeScript', category: 'Programming Languages' },
+  { name: 'React', category: 'Frameworks & Styling' },
+  { name: 'Next.js', category: 'Frameworks & Styling' },
   { name: 'Tailwind CSS', category: 'Frameworks & Styling' },
   { name: 'HTML5 & CSS3', category: 'Frameworks & Styling' },
   { name: 'Node.js', category: 'Tools & DevOps' },

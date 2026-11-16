@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 type LogoProps = {
   href?: string;
@@ -8,9 +9,7 @@ type LogoProps = {
 
 export default function Logo({ href = '/', showName = false, className = '' }: LogoProps) {
   const mark = (
-    <span aria-hidden="true" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black text-[11px] font-bold tracking-[-0.08em] text-white shadow-sm">
-      JM
-    </span>
+    <Image src="/logo-mark.svg" alt="" width={40} height={40} className="h-10 w-10 shrink-0 shadow-sm" />
   );
 
   const content = (
