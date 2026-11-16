@@ -23,6 +23,7 @@ html[data-theme='dark'] {
 html[data-theme='dark'] body { background: var(--background); }
 html[data-theme='dark'] [class~="bg-white"] { background-color: #111416 !important; }
 html[data-theme='dark'] [class~="bg-neutral-100"] { background-color: #1c2225 !important; }
+html[data-theme='dark'] [class~="bg-neutral-50"] { background-color: #171c1f !important; }
 html[data-theme='dark'] [class~="bg-black"] { background-color: #050505 !important; color: #fff !important; }
 html[data-theme='dark'] [class~="bg-black/5"] { background-color: rgb(255 255 255 / 0.06) !important; }
 html[data-theme='dark'] [class~="bg-black/10"] { background-color: rgb(255 255 255 / 0.1) !important; }
