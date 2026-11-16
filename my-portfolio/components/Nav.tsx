@@ -35,6 +35,7 @@ export default function Nav() {
       className={'site-nav fixed left-1/2 top-3 z-50 w-[calc(100%-1.5rem)] max-w-lg -translate-x-1/2 rounded-2xl border border-black/10 bg-white/95 px-3 py-2 backdrop-blur-xl xl:top-4 xl:w-auto xl:max-w-none xl:rounded-full xl:px-2 ' + (shrunk ? 'xl:py-1.5' : 'xl:py-2.5')}
     >
       <div className="flex items-center justify-between gap-2 xl:hidden">
+        <Link href={hrefFor('#hero')} className="pl-1 text-sm font-semibold tracking-tight text-black">Josh</Link>
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <Link href={hrefFor('#contact')} onClick={() => setMobileOpen(false)} className="rounded-full bg-black px-4 py-3 text-xs font-medium text-white hover:bg-black/80">Let's Talk</Link>
@@ -48,13 +49,14 @@ export default function Nav() {
         </div>
       </div>
       <div className="hidden items-center gap-1 xl:flex">
+        <Link href={hrefFor('#hero')} className="mr-2 px-2 text-sm font-semibold tracking-tight text-black">Josh</Link>
         {links.map((link) => <Link key={link.href} href={hrefFor(link.href)} className="whitespace-nowrap rounded-full px-4 py-3 text-sm text-black/70 transition-colors hover:bg-black/10 hover:text-black">{link.label}</Link>)}
         <ThemeToggle />
       </div>
       <AnimatePresence initial={false}>
         {mobileOpen && (
           <motion.div id="mobile-navigation" data-lenis-prevent initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}
-            className="grid max-h-[70dvh] grid-cols-1 gap-1 overflow-y-auto border-t border-black/10 pt-2 sm:grid-cols-2 xl:hidden">
+            className="grid max-h-[70dvh] grid-cols-1 justify-items-start gap-1 overflow-y-auto border-t border-black/10 pt-2 text-left sm:grid-cols-2 xl:hidden">
             {links.map((link) => <Link key={link.href} href={hrefFor(link.href)} onClick={() => setMobileOpen(false)} className="rounded-xl px-3 py-3 text-sm text-black/70 hover:bg-black/5 hover:text-black">{link.label}</Link>)}
           </motion.div>
         )}
