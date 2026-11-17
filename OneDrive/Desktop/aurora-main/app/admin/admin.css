@@ -1,0 +1,23 @@
+.adm { font-family: 'Poppins', sans-serif; background: #f5f9fa; min-height: 100vh; display: flex; color: #2c3e50; }
+.adm-side { width: 230px; background: #343a40; color: #fff; padding: 20px; flex-shrink: 0; }
+.adm-side img { max-width: 150px; display: block; margin: 10px auto 30px; }
+.adm-side a, .adm-side button { display: block; width: 100%; text-align: left; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 5px; margin-bottom: 5px; background: none; border: 0; font: inherit; cursor: pointer; }
+.adm-side a:hover, .adm-side button:hover { background: rgba(255,255,255,.1); }
+.adm-main { flex: 1; padding: 30px; min-width: 0; }
+.adm h1 { margin: 0 0 24px; font-size: 1.6rem; }
+.adm-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px; }
+.adm-card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.adm-card b { display: block; font-size: 2rem; color: #1a5f7a; }
+.adm-box { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.06); overflow-x: auto; margin-bottom: 24px; }
+.adm table { width: 100%; border-collapse: collapse; }
+.adm th, .adm td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e6edf0; white-space: nowrap; }
+.adm input, .adm select, .adm textarea { padding: 7px 10px; border: 1px solid #c9d6db; border-radius: 5px; font: inherit; }
+.adm .btn { padding: 7px 14px; border: 0; border-radius: 5px; background: #1a5f7a; color: #fff; cursor: pointer; font: inherit; }
+.adm .btn.danger { background: #b23b3b; }
+.adm .row { display: inline-flex; gap: 6px; align-items: center; margin-right: 6px; }
+.adm .err { background: #fdecea; color: #8a1f17; padding: 10px 14px; border-radius: 6px; margin-bottom: 16px; }
+.adm .badge { padding: 4px 10px; border-radius: 12px; font-size: .85em; background: #e6edf0; }
+.adm .badge.pending { background: #fff3cd; } .adm .badge.confirmed { background: #d1ecf1; }
+.adm .badge.checkedin { background: #d4edda; } .adm .badge.cancelled { background: #f8d7da; }
+.adm-login { max-width: 400px; margin: 0 auto; align-self: center; background: #fff; padding: 32px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,.08); width: 100%; }
+.adm-login input { width: 100%; margin-bottom: 14px; box-sizing: border-box; }
