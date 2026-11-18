@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { AnimatePresence, motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import ThemeToggle from './ThemeToggle';
+import Logo from './Logo';
 
 const links = [
   { href: '#hero', label: 'Home' },
@@ -19,48 +20,92 @@ const links = [
 
 export default function Nav() {
   const pathname = usePathname();
-  const { scrollY } = useScroll();
-  const [shrunk, setShrunk] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const menuButton = useRef<HTMLButtonElement>(null);
-  useMotionValueEvent(scrollY, 'change', (value) => setShrunk(value > 60));
+  const [pastHero, setPastHero] = useState(false);
+  const [activeSection, setActiveSection] = useState('#hero');
   const hrefFor = (hash: string) => pathname === '/' ? hash : '/' + hash;
+
+  useEffect(() => {
+    const updateNavPosition = () => {
+      const hero = document.getElementById('hero');
+      if (!hero) return;
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      setPastHero(window.scrollY >= heroBottom - 24);
+    };
+
+    updateNavPosition();
+    window.addEventListener('scroll', updateNavPosition, { passive: true });
+    window.addEventListener('resize', updateNavPosition);
+
+    const sections = links
+      .map((link) => document.querySelector(link.href))
+      .filter((section): section is Element => section !== null);
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveSection('#' + visible.target.id);
+    }, { rootMargin: '-25% 0px -55%', threshold: [0.05, 0.25, 0.5] });
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      window.removeEventListener('scroll', updateNavPosition);
+      window.removeEventListener('resize', updateNavPosition);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <motion.nav aria-label="Main navigation"
-      initial={{ y: -40, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      onKeyDown={(event) => {
-        if (event.key === 'Escape' && mobileOpen) { setMobileOpen(false); menuButton.current?.focus(); }
-      }}
-      className={'site-nav fixed left-1/2 top-3 z-50 w-[calc(100%-1.5rem)] max-w-lg -translate-x-1/2 rounded-2xl border border-black/10 bg-white/95 px-3 py-2 backdrop-blur-xl xl:top-4 xl:w-auto xl:max-w-none xl:rounded-full xl:px-2 ' + (shrunk ? 'xl:py-1.5' : 'xl:py-2.5')}
-    >
-      <div className="flex items-center justify-between gap-2 xl:hidden">
-        <Link href={hrefFor('#hero')} className="pl-1 text-sm font-semibold tracking-tight text-black">Josh</Link>
-        <div className="flex items-center gap-2">
-          <Link href={hrefFor('#contact')} onClick={() => setMobileOpen(false)} className="rounded-full bg-black px-4 py-3 text-xs font-medium text-white hover:bg-black/80">Let's Talk</Link>
-          <button ref={menuButton} type="button" aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileOpen} aria-controls="mobile-navigation"
-            onClick={() => setMobileOpen((open) => !open)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 text-black hover:bg-black/5">
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-              {mobileOpen ? <path d="m6 6 12 12M18 6 6 18" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div className="hidden items-center gap-1 xl:flex">
-        <Link href={hrefFor('#hero')} className="mr-2 px-2 text-sm font-semibold tracking-tight text-black">Josh</Link>
-        {links.map((link) => <Link key={link.href} href={hrefFor(link.href)} className="whitespace-nowrap rounded-full px-4 py-3 text-sm text-black/70 transition-colors hover:bg-black/10 hover:text-black">{link.label}</Link>)}
-        <ThemeToggle />
-      </div>
-      <AnimatePresence initial={false}>
-        {mobileOpen && (
-          <motion.div id="mobile-navigation" data-lenis-prevent initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}
-            className="grid max-h-[70dvh] grid-cols-1 justify-items-start gap-1 overflow-y-auto border-t border-black/10 pt-2 text-left sm:grid-cols-2 xl:hidden">
-            {links.map((link) => <Link key={link.href} href={hrefFor(link.href)} onClick={() => setMobileOpen(false)} className="rounded-xl px-3 py-3 text-sm text-black/70 hover:bg-black/5 hover:text-black">{link.label}</Link>)}
-            <div className="px-3 py-2"><ThemeToggle /></div>
-          </motion.div>
+    <>
+      <AnimatePresence>
+        {!pastHero && (
+          <motion.nav
+            aria-label="Identity and theme"
+            initial={{ y: -32, opacity: 0, scale: 0.96 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: -32, opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="site-nav fixed left-1/2 top-3 z-[60] flex -translate-x-1/2 items-center gap-3 rounded-full border border-black/10 bg-white/95 px-2 py-1.5 shadow-sm backdrop-blur-xl sm:gap-5"
+          >
+            <Logo href={hrefFor('#hero')} showName />
+            <ThemeToggle />
+          </motion.nav>
         )}
       </AnimatePresence>
-    </motion.nav>
+
+      <motion.nav
+        aria-label="Section navigation"
+        data-lenis-prevent
+        initial={false}
+        animate={{
+          top: pastHero ? '0.75rem' : 'auto',
+          bottom: pastHero ? 'auto' : '1rem',
+          y: pastHero ? 0 : 0,
+          scale: pastHero ? 0.98 : 1,
+        }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        className="section-nav fixed left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-5xl -translate-x-1/2 rounded-full border border-black/10 bg-white/95 px-2 py-2 shadow-lg backdrop-blur-xl"
+      >
+        <div className="no-scrollbar flex items-center gap-1 overflow-x-auto">
+          {links.map((link) => {
+            const active = activeSection === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={hrefFor(link.href)}
+                aria-current={active ? 'location' : undefined}
+                className={
+                  'shrink-0 whitespace-nowrap rounded-full px-3 py-2.5 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm ' +
+                  (active
+                    ? 'bg-black !text-white shadow-sm'
+                    : 'text-black/65 hover:bg-black/10 hover:text-black')
+                }
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+      </motion.nav>
+    </>
   );
 }
