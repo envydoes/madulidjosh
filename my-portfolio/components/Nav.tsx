@@ -8,7 +8,6 @@ import ThemeToggle from './ThemeToggle';
 import Logo from './Logo';
 
 const links = [
-  { href: '#hero', label: 'Home' },
   { href: '#about', label: 'About Me' },
   { href: '#education', label: 'Education' },
   { href: '#stack', label: 'Technical Skills' },
@@ -42,7 +41,7 @@ export default function Nav() {
     window.addEventListener('scroll', updateNavPosition, { passive: true });
     window.addEventListener('resize', updateNavPosition);
 
-    const sections = links
+    const sections = [{ href: '#hero' }, ...links]
       .map((link) => document.querySelector(link.href))
       .filter((section): section is Element => section !== null);
     const observer = new IntersectionObserver((entries) => {
@@ -115,6 +114,27 @@ export default function Nav() {
           })}
         </div>
       </motion.nav>
+
+      <AnimatePresence>
+        {pastHero && (
+          <motion.button
+            type="button"
+            aria-label="Back to top"
+            title="Back to top"
+            initial={{ opacity: 0, y: 16, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.9 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-5 right-5 z-[55] flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-black text-white shadow-lg transition-transform hover:-translate-y-1"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m6 15 6-6 6 6" />
+              <path d="M12 9v11" />
+            </svg>
+          </motion.button>
+        )}
+      </AnimatePresence>
     </>
   );
 }

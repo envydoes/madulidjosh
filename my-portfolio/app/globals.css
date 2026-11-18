@@ -49,6 +49,14 @@ html[data-theme='dark'] .section-nav {
 html[data-theme='dark'] .section-nav [class*="text-black/"] {
   color: #d7dfe2 !important;
 }
+html[data-theme='light'] .tech-pill {
+  background-color: #f5f5f5 !important;
+  color: #171717 !important;
+}
+html[data-theme='dark'] .tech-pill {
+  background-color: #1c2225 !important;
+  color: #f5f5f5 !important;
+}
 html[data-theme='dark'] dialog {
   background-color: #171c1f !important;
   color: #f5f5f5 !important;

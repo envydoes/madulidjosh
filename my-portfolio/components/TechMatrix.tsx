@@ -85,11 +85,10 @@ function MagneticPill({ name, category, index }: { name: string; category: strin
       onPointerLeave={handleLeave}
       style={{ x: reducedMotion ? 0 : springX, y: reducedMotion ? 0 : springY }}
       whileHover={{
-        backgroundColor: 'rgba(255,255,255,0.09)',
         borderColor: color,
         boxShadow: `0 0 20px ${color}33`,
       }}
-      className="flex items-center gap-2 rounded-full border border-black/15 bg-neutral-100 backdrop-blur-md px-4 py-2 text-sm text-black cursor-default select-none"
+      className="tech-pill flex items-center gap-2 rounded-full border border-black/15 bg-neutral-100 backdrop-blur-md px-4 py-2 text-sm text-black cursor-default select-none"
     >
       <span className="flex items-center gap-1">
         {techIcons[name]?.map(({ Icon, color: iconColor }, iconIndex) => (
