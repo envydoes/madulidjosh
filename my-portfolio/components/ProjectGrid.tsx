@@ -5,29 +5,45 @@ import { projects } from '@/lib/data';
 import Link from 'next/link';
 import ProjectImage from './ProjectImage';
 import Reveal from './Reveal';
+import { GenerationStage, generationLead } from './GenerationShimmer';
+import { useMotionPreferences } from '@/lib/MotionPreferences';
 
-export default function ProjectGrid() {
+export default function ProjectGrid({ full = false }: { full?: boolean }) {
+  const { reducedMotion } = useMotionPreferences();
+  const visibleProjects = full ? projects : projects.slice(0, 4);
   return (
     <section className="bg-white px-5 py-16 sm:px-6 md:px-16 md:py-24">
       <Reveal className="mx-auto mb-10 max-w-6xl md:mb-12">
         <span className="text-xs uppercase tracking-[0.2em] text-black/40">Selected Works</span>
-        <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Projects &amp; Systems</h2>
+        {full
+          ? <h1 className="text-3xl md:text-4xl font-bold text-black mt-3">All Projects &amp; Systems</h1>
+          : <h2 className="text-3xl md:text-4xl font-bold text-black mt-3">Projects &amp; Systems</h2>}
       </Reveal>
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
-        {projects.map((p, i) => (
-          <motion.article
-            key={p.id}
-            initial={{
-              opacity: 0,
-              x: i % 2 === 0 ? -30 : 30,
-              y: 24,
-              rotate: i % 2 === 0 ? -1 : 1,
-              scale: 0.985,
-            }}
-            whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
+        {visibleProjects.map((p, i) => {
+          const delay = (i % 2) * 0.1;
+          const outputDelay = reducedMotion ? 0 : delay + generationLead;
+          return (
+          <motion.div key={p.id} className="h-full" variants={{ hidden: {}, show: {} }} initial="hidden" whileInView="show"
             viewport={{ once: false, amount: 0.12, margin: '0px 0px -32px 0px' }}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: (i % 2) * 0.1 }}
+          >
+          <GenerationStage delay={delay} className="h-full">
+          <motion.article
+            variants={{
+              hidden: {
+                opacity: 0, visibility: 'hidden',
+                x: reducedMotion ? 0 : i % 2 === 0 ? -30 : 30,
+                y: reducedMotion ? 0 : 24,
+                rotate: reducedMotion ? 0 : i % 2 === 0 ? -1 : 1,
+                scale: reducedMotion ? 1 : 0.985,
+                transition: { duration: 0.18, visibility: { duration: 0 } },
+              },
+              show: {
+                opacity: 1, visibility: 'visible', x: 0, y: 0, rotate: 0, scale: 1,
+                transition: { duration: reducedMotion ? 0.18 : 0.75, ease: [0.22, 1, 0.36, 1], delay: outputDelay, visibility: { duration: 0, delay: outputDelay } },
+              },
+            }}
             className="group relative h-full rounded-2xl overflow-hidden border border-black/10 bg-black/5 backdrop-blur-md block"
           >
             <Link href={`/projects/${p.id}`} className="flex h-full flex-col" aria-label={`View ${p.title} project details`}>
@@ -61,8 +77,18 @@ export default function ProjectGrid() {
             </div>
             </Link>
           </motion.article>
-        ))}
+          </GenerationStage>
+          </motion.div>
+          );
+        })}
       </div>
+      {!full && (
+        <div className="mx-auto mt-8 max-w-6xl text-center">
+          <Link href="/projects" className="inline-flex min-h-11 items-center rounded-full border border-black/20 px-5 py-3 text-sm font-medium text-black hover:bg-black hover:text-white">
+            View more projects ↗
+          </Link>
+        </div>
+      )}
     </section>
   );
 }
