@@ -118,7 +118,7 @@ dialog::backdrop { background: rgb(0 0 0 / 80%); }
 /* Paper-style dots follow the actual text lines and images before they appear. */
 .generation-target { position: relative; isolation: isolate; }
 .generation-shimmer {
-  --scan-blue: #3987ff;
+  --scan-blue: #155eef;
   position: absolute;
   z-index: 2;
   display: block;
@@ -128,6 +128,8 @@ dialog::backdrop { background: rgb(0 0 0 / 80%); }
   -webkit-text-stroke: 0;
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
+  will-change: opacity, filter;
+  filter: drop-shadow(0 0 1px var(--scan-blue));
 }
 .generation-shimmer__dots {
   position: absolute;
@@ -137,7 +139,7 @@ dialog::backdrop { background: rgb(0 0 0 / 80%); }
   mask-repeat: repeat;
 }
 html[data-theme='dark'] .generation-shimmer {
-  --scan-blue: #74b3ff;
+  --scan-blue: #82b8ff;
 }
 .shimmer-preview-control { border: 1px solid #b4d3ff; background: #edf5ff; color: #1754a3; }
 html[data-theme='dark'] .shimmer-preview-control { background: #15263e; color: #bad8ff; border-color: #325c90; }

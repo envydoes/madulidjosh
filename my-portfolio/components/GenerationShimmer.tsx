@@ -18,7 +18,7 @@ const dotTextures = Array.from({ length: 4 }, (_, layer) => {
     for (let column = 0; column < 24; column++) {
       const seed = (column * 37 + row * 19 + row * column * 11) % 101;
       if (seed % 4 !== layer) continue;
-      circles += `<circle cx="${column * 6 + 3}" cy="${row * 6 + 3}" r="1" fill="white" opacity="${0.35 + seed / 155}"/>`;
+      circles += `<circle cx="${column * 6 + 3}" cy="${row * 6 + 3}" r="1.15" fill="white" opacity="${0.72 + seed / 360}"/>`;
     }
   }
   return svgMask(`<svg xmlns="http://www.w3.org/2000/svg" width="144" height="60">${circles}</svg>`);
