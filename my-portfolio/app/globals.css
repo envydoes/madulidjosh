@@ -35,15 +35,17 @@ html[data-theme='dark'] [class~="text-white"] { color: #fff !important; }
 html[data-theme='dark'] .loading-screen { background: #111416 !important; }
 html[data-theme='dark'] :focus-visible { outline-color: #f5f5f5; }
 html[data-theme='dark'] .site-nav {
-  background-color: #f5f5f5 !important;
-  color: #111416;
+  background-color: #171c1f !important;
+  border-color: rgb(255 255 255 / 0.16) !important;
+  color: #f5f5f5;
 }
 html[data-theme='dark'] .site-nav [class~="text-black"],
 html[data-theme='dark'] .site-nav [class*="text-black/"] {
-  color: #111416 !important;
+  color: #f5f5f5 !important;
 }
 html[data-theme='dark'] .section-nav {
   background-color: #171c1f !important;
+  border-color: rgb(255 255 255 / 0.16) !important;
   color: #f5f5f5;
 }
 html[data-theme='dark'] .section-nav [class*="text-black/"] {
@@ -112,6 +114,34 @@ main { overflow-x: clip; }
 .skip-link:focus { transform: translateY(0); }
 
 dialog::backdrop { background: rgb(0 0 0 / 80%); }
+
+/* Paper-style dots follow the actual text lines and images before they appear. */
+.generation-target { position: relative; isolation: isolate; }
+.generation-shimmer {
+  --scan-blue: #3987ff;
+  position: absolute;
+  z-index: 2;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  -webkit-text-stroke: 0;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+.generation-shimmer__dots {
+  position: absolute;
+  inset: 0;
+  background: var(--scan-blue);
+  mask-size: 144px 60px;
+  mask-repeat: repeat;
+}
+html[data-theme='dark'] .generation-shimmer {
+  --scan-blue: #74b3ff;
+}
+.shimmer-preview-control { border: 1px solid #b4d3ff; background: #edf5ff; color: #1754a3; }
+html[data-theme='dark'] .shimmer-preview-control { background: #15263e; color: #bad8ff; border-color: #325c90; }
+html[data-motion='reduced'] .generation-shimmer { display: none; }
 
 .loading-screen {
   animation: loading-screen-fallback 0.45s 0.9s forwards;
