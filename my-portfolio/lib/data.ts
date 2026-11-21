@@ -64,6 +64,29 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 'lanello-heights',
+    title: 'Lanello Heights',
+    category: 'Real Estate',
+    description:
+      'A responsive real-estate landing page for Lanello Heights in General Trias, Cavite, presenting available model homes, project features, location details, financing, and a guided house-tour inquiry.',
+    objective: 'Present Lanello Heights clearly and turn interested buyers into qualified house-tour inquiries.',
+    objectives: [
+      'Present project highlights and available home models in a focused, premium visual layout.',
+      'Make financing, location, amenities, and project information easy to understand.',
+      'Provide a direct inquiry and house-tour booking experience for prospective buyers.',
+    ],
+    contribution: 'Designed and developed the responsive landing page, including the real-estate visual direction, model-house presentation, location information, project highlights, inquiry form, and Google Apps Script integration.',
+    year: '2026',
+    tags: ['Google Apps Script', 'HTML', 'CSS', 'JavaScript'],
+    image: '/images/projects/lanello-heights/lanello-hero.png',
+    imageAlt: 'Lanello Heights real-estate landing page hero section',
+    imageFit: 'cover',
+    badge: 'Real Estate',
+    liveUrl: 'https://script.google.com/macros/s/AKfycbxlT9hznk8TFyRsbvU2awWl_tINufvbN6T8lx0EuCBdY_Ju9YwJlQ2GFBEJ-imusa7y/exec',
+    githubUrl: 'https://github.com/envydoes/lanello-heights',
+    designUrl: '',
+  },
+  {
     id: 'unbounded',
     title: 'Unbounded Landing Page',
     category: 'Web Design',

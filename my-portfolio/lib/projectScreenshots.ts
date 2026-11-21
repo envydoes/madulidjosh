@@ -2,6 +2,33 @@ export type ProjectScreenshot = { src: string; title: string; alt: string };
 
 // Real project captures and original ATOM AI Figma frame exports.
 export const projectScreenshots: Record<string, ProjectScreenshot[]> = {
+  "lanello-heights": [
+    {
+      "src": "/images/projects/lanello-heights/lanello-hero.png",
+      "title": "Hero and project overview",
+      "alt": "Lanello Heights hero with the project headline, project statistics, and featured residential development photograph."
+    },
+    {
+      "src": "/images/projects/lanello-heights/lanello-models.png",
+      "title": "Model houses",
+      "alt": "Lanello Heights Abbie, Brenda, and Chelsea model house cards with floor area and lot area information."
+    },
+    {
+      "src": "/images/projects/lanello-heights/lanello-features.png",
+      "title": "Features and amenities",
+      "alt": "Lanello Heights features and amenities section describing home inclusions and community facilities."
+    },
+    {
+      "src": "/images/projects/lanello-heights/lanello-location.png",
+      "title": "Location",
+      "alt": "Lanello Heights location map and nearby landmark distances."
+    },
+    {
+      "src": "/images/projects/lanello-heights/lanello-inquiry.png",
+      "title": "Value and house-tour inquiry",
+      "alt": "Lanello Heights financing value summary and house-tour inquiry form."
+    },
+  ],
   "unbounded": [
     {
       "src": "/images/projects/unbounded-1.png",
