@@ -61,7 +61,12 @@ export default function Nav() {
 
   useEffect(() => {
     const activeLink = sectionLinks.current?.querySelector('[aria-current="location"]');
-    activeLink?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    const container = sectionLinks.current;
+    if (activeLink instanceof HTMLElement && container) {
+      const linkLeft = activeLink.offsetLeft;
+      const target = linkLeft - (container.clientWidth - activeLink.offsetWidth) / 2;
+      container.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+    }
   }, [activeSection]);
 
   return (
@@ -91,9 +96,9 @@ export default function Nav() {
           y: pastHero ? 12 : bottomY,
         }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-        className="section-nav fixed left-1/2 top-0 z-50 w-[calc(100%-1.5rem)] max-w-5xl -translate-x-1/2 rounded-full border border-black/10 bg-white/95 px-2 py-2 shadow-lg backdrop-blur-xl"
+        className="section-nav fixed left-1/2 top-0 z-50 w-fit max-w-[calc(100%-1.5rem)] -translate-x-1/2 rounded-full border border-black/10 bg-white/95 px-2 py-2 shadow-lg backdrop-blur-xl"
       >
-        <div ref={sectionLinks} className="no-scrollbar flex items-center gap-1 overflow-x-auto">
+        <div ref={sectionLinks} className="no-scrollbar flex w-full max-w-[72rem] items-center gap-1 overflow-x-auto">
           {links.map((link) => {
             const active = activeSection === link.href;
             return (
